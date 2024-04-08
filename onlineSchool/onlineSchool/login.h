@@ -1,13 +1,12 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-#include <raylib.h>
 #include <string>
+#include <iostream>
+#include <fstream>
+#include "raylib.h"
 
 using namespace std;
-
-#define MAX_EMAIL_LENGTH 30
-#define MAX_PASSWORD_LENGTH 20
 
 class Login {
 public:
@@ -15,29 +14,23 @@ public:
 
     void Update();
     void Draw();
-
-    string GetEmail() const { return email; }
-    string GetPassword() const { return password; }
-    bool IsLoginClicked() const { return loginClicked; }
-    bool IsRegisterClicked() const { return registerClicked; }
-    bool IsEmailBoxHovered() const { return emailBoxHovered; }
-    bool IsPasswordBoxHovered() const { return passwordBoxHovered; }
-    bool IsLoginButtonHovered() const { return loginButtonHovered; }
-    bool IsRegisterButtonHovered() const { return registerButtonHovered; }
+    void HandleInput();
 
 private:
+    const int MAX_EMAIL_LENGTH = 50;
+    const int MAX_PASSWORD_LENGTH = 20;
+
     Rectangle emailBox;
     Rectangle passwordBox;
     Rectangle loginButton;
     Rectangle registerButton;
-
+    
     string email;
     string password;
-
     bool loginClicked;
     bool registerClicked;
     bool isPasswordHidden;
-
+    bool capsLockEnabled;
     bool emailBoxHovered;
     bool passwordBoxHovered;
     bool loginButtonHovered;
@@ -46,9 +39,9 @@ private:
     Color emailBoxOutlineColor;
     Color passwordBoxOutlineColor;
 
-    bool capsLockEnabled;
-
-    void HandleInput();
+    bool CheckLogin(const string& email, const string& password);
+    bool CheckExistingEmail(const string& email);
+    void RegisterNewAccount(const string& email, const string& password);
 };
 
-#endif // LOGIN_H
+#endif

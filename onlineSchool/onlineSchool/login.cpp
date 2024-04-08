@@ -99,9 +99,92 @@ void Login::HandleInput() {
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         if (loginButtonHovered) {
             loginClicked = true;
+            // Check if the email exists and if the password matches
+            if (CheckLogin(email, password)) {
+                // Successful login
+                DrawText("Successful Login!", 400, 500, 30, GREEN);
+            }
+            else {
+                // Login failed
+                DrawText("Invalid Email or Password!", 400, 500, 30, RED);
+            }
         }
         if (registerButtonHovered) {
             registerClicked = true;
+            // Check if the email already exists
+            if (CheckExistingEmail(email)) {
+                // Email already exists
+                DrawText("Email Already Exists!", 400, 500, 30, RED);
+            }
+            else {
+                // Create new account
+                RegisterNewAccount(email, password);
+                DrawText("Account Registered Successfully!", 400, 500, 30, GREEN);
+            }
+        }
+    }
+}
+
+bool Login::CheckLogin(const string& email, const string& password) {
+    ifstream loginFile("login_info.txt");
+    if (loginFile.is_open()) {
+        string line;
+        while (getline(loginFile, line)) {
+            if (line.find("Email: " + email) != string::npos) {
+                getline(loginFile, line); // Read the corresponding password line
+                if (line.find("Password: " + password) != string::npos) {
+                    cout << "Successful login!" << endl;
+                    loginFile.close();
+                    return true;
+                }
+                else {
+                    cout << "Incorrect password!" << endl;
+                    loginFile.close();
+                    return false;
+                }
+            }
+        }
+        cout << "Account doesn't exist!" << endl;
+        loginFile.close();
+        return false;
+    }
+    else {
+        cout << "Error: Unable to open login_info.txt!" << endl;
+        return false;
+    }
+}
+
+bool Login::CheckExistingEmail(const string& email) {
+    ifstream loginFile("login_info.txt");
+    if (loginFile.is_open()) {
+        string line;
+        while (getline(loginFile, line)) {
+            if (line.find("Email: " + email) != string::npos) {
+                cout << "Username is already taken!" << endl;
+                loginFile.close();
+                return true;
+            }
+        }
+        loginFile.close();
+        return false;
+    }
+    else {
+        cout << "Error: Unable to open login_info.txt!" << endl;
+        return true;
+    }
+}
+
+void Login::RegisterNewAccount(const string& email, const string& password) {
+    if (!CheckExistingEmail(email)) {
+        ofstream loginFile("login_info.txt", ios_base::app);
+        if (loginFile.is_open()) {
+            loginFile << "Email: " << email << endl;
+            loginFile << "Password: " << password << endl;
+            cout << "Account registered successfully!" << endl;
+            loginFile.close();
+        }
+        else {
+            cout << "Error: Unable to open login_info.txt for writing!" << endl;
         }
     }
 }
