@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include "raylib.h"
 
 using namespace std;
@@ -16,6 +17,9 @@ public:
     void Draw();
     void HandleInput();
     bool IsLoggedIn() const;
+
+    string GetLoggedInUserEmail() const;
+    vector<string> GetGrades(const string& email);
 
 private:
     const int MAX_EMAIL_LENGTH = 50;
@@ -36,14 +40,15 @@ private:
     bool passwordBoxHovered;
     bool loginButtonHovered;
     bool registerButtonHovered;
-    bool isLoggedIn;
 
     Color emailBoxOutlineColor;
     Color passwordBoxOutlineColor;
-
+    string loggedInUserEmail;
     bool CheckLogin(const string& email, const string& password);
     bool CheckExistingEmail(const string& email);
     void RegisterNewAccount(const string& email, const string& password);
+
+    bool isLoggedIn;
 };
 
 #endif

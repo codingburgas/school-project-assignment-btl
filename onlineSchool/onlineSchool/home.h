@@ -2,21 +2,23 @@
 #define HOME_H
 
 #include "raylib.h"
-
+#include "login.h"
+#include "vector"
 class Home {
 public:
-    Home();
+
+    Home(Login& login);
 
     void Update();
     void Draw();
     void HandleInput();
+    void DisplayUserGrades();
 
 private:
-    Rectangle button; // Example button
+    Rectangle button;
     Color buttonColor;
     bool buttonHovered;
-
-    void DrawButton(const char* text, Rectangle rect, Color color, Color textColor);
+    Login& loginRef;
 };
 
 #endif

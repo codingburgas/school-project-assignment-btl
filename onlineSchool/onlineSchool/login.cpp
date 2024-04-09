@@ -102,13 +102,15 @@ void Login::HandleInput() {
             loginClicked = true;
             // Check if the email exists and if the password matches
             if (CheckLogin(email, password)) {
-                // Successful login
                 isLoggedIn = true;
+                loggedInUserEmail = email;
             }
             else {
                 // Login failed
                 DrawText("Invalid Email or Password!", 400, 500, 30, RED);
             }
+
+
         }
         if (registerButtonHovered) {
             registerClicked = true;
@@ -177,6 +179,7 @@ bool Login::CheckExistingEmail(const string& email) {
 
 void Login::RegisterNewAccount(const string& email, const string& password) {
     if (!CheckExistingEmail(email)) {
+        // Add the account information to the login_info.txt file
         ofstream loginFile("login_info.txt", ios_base::app);
         if (loginFile.is_open()) {
             loginFile << "Email: " << email << endl;
@@ -187,7 +190,51 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
         else {
             cout << "Error: Unable to open login_info.txt for writing!" << endl;
         }
+
+        // Create a new text file for the account with the format "email_grades.txt"
+        string fileName = email + "_grades.txt";
+        ofstream gradesFile(fileName);
+
+        if (gradesFile.is_open()) {
+            // Write the initial structure for the grades file
+            gradesFile << "Grades for account: " << email << endl;
+            gradesFile << "----------------------------------------" << endl;
+
+            // Write initial grades for each subject
+            for (int i = 1; i <= 10; ++i) {
+                gradesFile << "Subject " << i << ": " << "N/A" << endl; // Default grade is "N/A"
+            }
+
+            cout << "Grades file created successfully for account: " << email << endl;
+            gradesFile.close();
+        }
+        else {
+            cout << "Error: Unable to create grades file for account: " << email << endl;
+        }
     }
+}
+
+vector<string> Login::GetGrades(const string& email) {
+    vector<string> grades;
+    string fileName = email + "_grades.txt";
+    ifstream gradesFile(fileName);
+
+    if (gradesFile.is_open()) {
+        string line;
+        while (getline(gradesFile, line)) {
+            grades.push_back(line);
+        }
+        gradesFile.close();
+    }
+    else {
+        cout << "Error: Unable to open grades file for account: " << email << endl;
+    }
+
+    return grades;
+}
+
+string Login::GetLoggedInUserEmail() const {
+    return loggedInUserEmail;
 }
 
 bool Login::IsLoggedIn() const {

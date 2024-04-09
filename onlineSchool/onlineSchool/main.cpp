@@ -8,8 +8,8 @@ int main() {
 
     InitWindow(screenWidth, screenHeight, "Login Page");
 
-    Login loginPage; // Create an instance of the Login class
-    Home homeScreen; // Create an instance of the Home class
+    Login loginPage;
+    Home homeScreen(loginPage);
 
     while (!WindowShouldClose()) {
         if (!loginPage.IsLoggedIn()) {

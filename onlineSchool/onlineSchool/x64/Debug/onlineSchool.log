@@ -1,4 +1,33 @@
 ﻿  home.cpp
+  login.cpp
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(31,72): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(31,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(31,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(31,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(32,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(32,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(35,84): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(35,65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(35,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(35,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(38,76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(38,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(41,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(41,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(45,84): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(45,65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(45,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(45,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(46,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(46,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(49,96): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(49,74): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(49,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(49,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(50,66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(50,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  main.cpp
+  Generating Code...
 raylib.lib(rcore.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(rcore.c.obj)' or at ''; linking object as if no debug info
 raylib.lib(rshapes.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(rshapes.c.obj)' or at ''; linking object as if no debug info
 raylib.lib(rtext.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(rtext.c.obj)' or at ''; linking object as if no debug info
