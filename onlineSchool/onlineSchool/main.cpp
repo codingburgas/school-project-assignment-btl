@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "login.h"
+#include "home.h"
 
 int main() {
     const int screenWidth = 1280;
@@ -8,16 +9,23 @@ int main() {
     InitWindow(screenWidth, screenHeight, "Login Page");
 
     Login loginPage; // Create an instance of the Login class
+    Home homeScreen; // Create an instance of the Home class
 
     while (!WindowShouldClose()) {
-        loginPage.Update();
-
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-
-        loginPage.Draw();
-
-        EndDrawing();
+        if (!loginPage.IsLoggedIn()) {
+            loginPage.Update();
+            BeginDrawing();
+            ClearBackground(RAYWHITE);
+            loginPage.Draw();
+            EndDrawing();
+        }
+        else {
+            homeScreen.Update();
+            BeginDrawing();
+            ClearBackground(RAYWHITE);
+            homeScreen.Draw();
+            EndDrawing();
+        }
     }
 
     CloseWindow();

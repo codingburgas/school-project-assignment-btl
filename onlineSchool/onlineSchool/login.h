@@ -15,6 +15,7 @@ public:
     void Update();
     void Draw();
     void HandleInput();
+    bool IsLoggedIn() const;
 
 private:
     const int MAX_EMAIL_LENGTH = 50;
@@ -24,7 +25,7 @@ private:
     Rectangle passwordBox;
     Rectangle loginButton;
     Rectangle registerButton;
-    
+
     string email;
     string password;
     bool loginClicked;
@@ -35,6 +36,7 @@ private:
     bool passwordBoxHovered;
     bool loginButtonHovered;
     bool registerButtonHovered;
+    bool isLoggedIn;
 
     Color emailBoxOutlineColor;
     Color passwordBoxOutlineColor;

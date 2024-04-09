@@ -12,6 +12,7 @@ Login::Login() {
     loginClicked = false;
     registerClicked = false;
     isPasswordHidden = true;
+    isLoggedIn = false;
 
     // Initialize outline colors
     emailBoxOutlineColor = BLACK;
@@ -102,7 +103,7 @@ void Login::HandleInput() {
             // Check if the email exists and if the password matches
             if (CheckLogin(email, password)) {
                 // Successful login
-                DrawText("Successful Login!", 400, 500, 30, GREEN);
+                isLoggedIn = true;
             }
             else {
                 // Login failed
@@ -187,4 +188,8 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
             cout << "Error: Unable to open login_info.txt for writing!" << endl;
         }
     }
+}
+
+bool Login::IsLoggedIn() const {
+    return isLoggedIn;
 }
