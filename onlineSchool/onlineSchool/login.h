@@ -25,6 +25,8 @@ private:
     const int MAX_EMAIL_LENGTH = 50;
     const int MAX_PASSWORD_LENGTH = 20;
 
+    Rectangle line;
+    Rectangle outerBox;
     Rectangle emailBox;
     Rectangle passwordBox;
     Rectangle loginButton;

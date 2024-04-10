@@ -15,14 +15,14 @@ int main() {
         if (!loginPage.IsLoggedIn()) {
             loginPage.Update();
             BeginDrawing();
-            ClearBackground(RAYWHITE);
+            ClearBackground(DARKBLUE);
             loginPage.Draw();
             EndDrawing();
         }
         else {
             homeScreen.Update();
             BeginDrawing();
-            ClearBackground(RAYWHITE);
+            ClearBackground(DARKBLUE);
             homeScreen.Draw();
             EndDrawing();
         }

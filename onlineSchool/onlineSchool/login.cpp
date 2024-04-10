@@ -2,6 +2,7 @@
 
 Login::Login() {
     // Initialize UI elements
+    outerBox = {250, 125, 800, 400};
     emailBox = { 400, 250, 480, 50 };
     passwordBox = { 400, 320, 480, 50 };
     loginButton = { 400, 400, 200, 50 };
@@ -24,15 +25,25 @@ void Login::Update() {
 }
 
 void Login::Draw() {
+    //Outer Box
+    DrawRectangle(outerBox.x, outerBox.y, outerBox.width, outerBox.height, WHITE);
+
     // Draw UI elements
-    DrawText("Login", 520, 150, 40, BLACK);
+    DrawText("Login", 585, 150, 40, BLACK);
 
     // Email box
     DrawRectangleLines(emailBox.x, emailBox.y, emailBox.width, emailBox.height, emailBoxOutlineColor);
     DrawText(email.c_str(), emailBox.x + 10, emailBox.y + 15, 20, BLACK);
+    if (!emailBoxHovered&&email.empty()) {
+        DrawText("Email/username", 420, 267, 20, BLACK);
+    }
 
     // Password box
     DrawRectangleLines(passwordBox.x, passwordBox.y, passwordBox.width, passwordBox.height, passwordBoxOutlineColor);
+   
+    if (!passwordBoxHovered&&password.empty()) {
+        DrawText("Password", 420, 335, 20, BLACK);
+    }
     if (isPasswordHidden) {
         string hiddenPassword(password.length(), '*');
         DrawText(hiddenPassword.c_str(), passwordBox.x + 10, passwordBox.y + 15, 20, BLACK);
@@ -42,12 +53,15 @@ void Login::Draw() {
     }
 
     // Login button
-    DrawRectangleLines(loginButton.x, loginButton.y, loginButton.width, loginButton.height, loginButtonHovered ? GREEN : BLACK);
-    DrawText("Login", loginButton.x + 40, loginButton.y + 15, 20, BLACK);
+    DrawRectangle(loginButton.x, loginButton.y, loginButton.width, loginButton.height, loginButtonHovered ? BLUE:DARKBLUE);
+    DrawText("Login", loginButton.x + 40, loginButton.y + 15, 20,  WHITE);
+    if (!loginButtonHovered) {
+        
+    }
 
     // Register button
-    DrawRectangleLines(registerButton.x, registerButton.y, registerButton.width, registerButton.height, registerButtonHovered ? GREEN : BLACK);
-    DrawText("Register", registerButton.x + 20, registerButton.y + 15, 20, BLACK);
+    DrawRectangle(registerButton.x, registerButton.y, registerButton.width, registerButton.height, registerButtonHovered ? BLUE:DARKBLUE);
+        DrawText("Register", registerButton.x + 20, registerButton.y + 15, 20, WHITE);
 }
 
 void Login::HandleInput() {
@@ -94,8 +108,8 @@ void Login::HandleInput() {
     registerButtonHovered = CheckCollisionPointRec(mousePos, registerButton);
 
     // Set active text box outline color
-    emailBoxOutlineColor = emailBoxHovered ? GREEN : BLACK;
-    passwordBoxOutlineColor = passwordBoxHovered ? GREEN : BLACK;
+    emailBoxOutlineColor =  BLACK;
+    passwordBoxOutlineColor =  BLACK;
 
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         if (loginButtonHovered) {
