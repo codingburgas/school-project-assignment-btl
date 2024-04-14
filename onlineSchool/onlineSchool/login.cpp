@@ -86,9 +86,8 @@ void Login::HandleInput() {
             }
         }
         else if ((key >= 32 && key <= 125) && (email.length() < MAX_EMAIL_LENGTH || password.length() < MAX_PASSWORD_LENGTH)) {
-            // Convert to uppercase if Caps Lock is active or shift is pressed
             if ((IsKeyDown(KEY_LEFT_SHIFT) || IsKeyDown(KEY_RIGHT_SHIFT) || capsLockEnabled) && key >= 'a' && key <= 'z') {
-                key -= 32; // Convert to uppercase
+                key -= 32;
             }
 
             if (emailBoxHovered && email.length() < MAX_EMAIL_LENGTH) {
@@ -114,7 +113,6 @@ void Login::HandleInput() {
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         if (loginButtonHovered) {
             loginClicked = true;
-            // Check if the email exists and if the password matches
             if (CheckLogin(email, password)) {
                 isLoggedIn = true;
                 loggedInUserEmail = email;
@@ -128,7 +126,6 @@ void Login::HandleInput() {
         }
         if (registerButtonHovered) {
             registerClicked = true;
-            // Check if the email already exists
             if (CheckExistingEmail(email)) {
                 // Email already exists
                 DrawText("Email Already Exists!", 400, 500, 30, RED);
@@ -148,7 +145,7 @@ bool Login::CheckLogin(const string& email, const string& password) {
         string line;
         while (getline(loginFile, line)) {
             if (line.find("Email: " + email) != string::npos) {
-                getline(loginFile, line); // Read the corresponding password line
+                getline(loginFile, line);
                 if (line.find("Password: " + password) != string::npos) {
                     cout << "Successful login!" << endl;
                     loginFile.close();
@@ -193,8 +190,17 @@ bool Login::CheckExistingEmail(const string& email) {
 
 void Login::RegisterNewAccount(const string& email, const string& password) {
     if (!CheckExistingEmail(email)) {
-        // Add the account information to the login_info.txt file
-        ofstream loginFile("login_info.txt", ios_base::app);
+        string usersFolder = "users";
+
+        if (!filesystem::exists(usersFolder)) {
+            if (!filesystem::create_directory(usersFolder)) {
+                cout << "Error: Unable to create users folder!" << endl;
+                return;
+            }
+        }
+
+
+        ofstream loginFile("users/login_info.txt", ios_base::app);
         if (loginFile.is_open()) {
             loginFile << "Email: " << email << endl;
             loginFile << "Password: " << password << endl;
@@ -203,27 +209,28 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
         }
         else {
             cout << "Error: Unable to open login_info.txt for writing!" << endl;
+            return;
         }
 
-        // Create a new text file for the account with the format "email_grades.txt"
-        string gradesFileName = email + "_grades.txt";
+        string folderName = "users/" + email;
+        if (!filesystem::create_directory(folderName)) {
+            cout << "Error: Unable to create folder for account: " << email << endl;
+            return;
+        }
+        string gradesFileName = folderName + "/grades.txt";
         ofstream gradesFile(gradesFileName);
         if (gradesFile.is_open()) {
             gradesFile << "Grades for account: " << email << endl;
             gradesFile << "----------------------------------------" << endl;
-
-            // Write initial grades for each subject
-            for (int i = 1; i <= 10; ++i) {
-                gradesFile << "Subject " << i << ": " << "N/A" << endl;
-            }
-
             cout << "Grades file created successfully for account: " << email << endl;
             gradesFile.close();
         }
         else {
             cout << "Error: Unable to create grades file for account: " << email << endl;
         }
-        string absencesFileName = email + "_absences.txt";
+
+
+        string absencesFileName = folderName + "/absences.txt";
         ofstream absencesFile(absencesFileName);
         if (absencesFile.is_open()) {
             absencesFile << "Absences for account: " << email << endl;
@@ -236,7 +243,7 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
             cout << "Error: Unable to create absences file for account: " << email << endl;
         }
 
-        string remarksFileName = email + "_remarks.txt";
+        string remarksFileName = folderName + "/remarks.txt";
         ofstream remarksFile(remarksFileName);
         if (remarksFile.is_open()) {
             remarksFile << "Remarks for account: " << email << endl;
@@ -251,10 +258,9 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
     }
 }
 
-
 vector<string> Login::GetGrades(const string& email) {
     vector<string> grades;
-    string fileName = email + "_grades.txt";
+    string fileName = "users/" + email + "/grades.txt";
     ifstream gradesFile(fileName);
 
     if (gradesFile.is_open()) {
