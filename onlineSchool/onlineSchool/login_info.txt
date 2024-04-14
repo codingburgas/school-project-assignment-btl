@@ -1,6 +1,2 @@
 Email: AAA
 Password: AAA
-Email: KEVIN
-Password: 123
-Email: NNN
-Password: PAROLA

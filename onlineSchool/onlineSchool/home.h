@@ -3,22 +3,33 @@
 
 #include "raylib.h"
 #include "login.h"
-#include "vector"
+#include <vector>
+
 class Home {
 public:
-
     Home(Login& login);
 
     void Update();
     void Draw();
     void HandleInput();
     void DisplayUserGrades();
+    void DisplayUserAbsences();
+    void DisplayUserRemarks();
 
 private:
-    Rectangle button;
+    Rectangle gradesButton;
+    Rectangle absencesButton;
+    Rectangle remarksButton;
+    Rectangle backButton;
     Color buttonColor;
-    bool buttonHovered;
+    bool gradesButtonHovered;
+    bool absencesButtonHovered;
+    bool remarksButtonHovered;
+    bool backButtonHovered;
     Login& loginRef;
+    bool displayGrades;
+    bool displayAbsences;
+    bool displayRemarks;
 };
 
 #endif

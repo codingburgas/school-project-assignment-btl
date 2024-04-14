@@ -1,9 +1,16 @@
 #include "home.h"
 
 Home::Home(Login& login) : loginRef(login) {
-    button = { 400, 300, 200, 50 };
+    gradesButton = { 400, 250, 200, 50 };
+    absencesButton = { 400, 350, 200, 50 };
+    remarksButton = { 400, 450, 200, 50 };
     buttonColor = GRAY;
-    buttonHovered = false;
+    gradesButtonHovered = false;
+    absencesButtonHovered = false;
+    remarksButtonHovered = false;
+    displayGrades = false;
+    displayAbsences = false;
+    displayRemarks = false;
 }
 
 void Home::Update() {
@@ -12,13 +19,49 @@ void Home::Update() {
 
 void Home::Draw() {
     ClearBackground(RAYWHITE);
-    DrawText("Home", 400, 500, 30, RED);
-    DisplayUserGrades();
+    DrawText("Home", 400, 100, 30, RED);
+    if (!displayGrades && !displayAbsences && !displayRemarks) {
+        DrawRectangleRec(gradesButton, gradesButtonHovered ? BLUE : GRAY);
+        DrawText("Grades", gradesButton.x + 50, gradesButton.y + 15, 20, WHITE);
+
+        DrawRectangleRec(absencesButton, absencesButtonHovered ? BLUE : GRAY);
+        DrawText("Absences", absencesButton.x + 30, absencesButton.y + 15, 20, WHITE);
+
+        DrawRectangleRec(remarksButton, remarksButtonHovered ? BLUE : GRAY);
+        DrawText("Remarks", remarksButton.x + 40, remarksButton.y + 15, 20, WHITE);
+    }
+    if (displayGrades) {
+        DisplayUserGrades();
+    }
+
+    if (displayAbsences) {
+        DisplayUserAbsences();
+    }
+
+    if (displayRemarks) {
+        DisplayUserRemarks();
+    }
 }
+
+
 
 void Home::HandleInput() {
     Vector2 mousePos = GetMousePosition();
-    buttonHovered = CheckCollisionPointRec(mousePos, button);
+    gradesButtonHovered = CheckCollisionPointRec(mousePos, gradesButton);
+    absencesButtonHovered = CheckCollisionPointRec(mousePos, absencesButton);
+    remarksButtonHovered = CheckCollisionPointRec(mousePos, remarksButton);
+
+    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        if (gradesButtonHovered) {
+            displayGrades = !displayGrades;
+        }
+        if (absencesButtonHovered) {
+            displayAbsences = !displayAbsences;
+        }
+        if (remarksButtonHovered) {
+            displayRemarks = !displayRemarks;
+        }
+    }
 }
 
 void Home::DisplayUserGrades() {
@@ -26,13 +69,53 @@ void Home::DisplayUserGrades() {
     string email = loginRef.GetLoggedInUserEmail();
     vector<string> grades = loginRef.GetGrades(email);
     if (!grades.empty()) {
-        int yOffset = 100;
+        int yOffset = 200;
         for (const auto& grade : grades) {
             DrawText(grade.c_str(), 400, yOffset, 20, BLACK);
             yOffset += 30;
         }
     }
     else {
-        DrawText("No grades available", 400, 100, 20, BLACK);
+        DrawText("No grades available", 400, 200, 20, BLACK);
+    }
+}
+
+void Home::DisplayUserRemarks() {
+    // Retrieve the logged-in user's email
+    string email = loginRef.GetLoggedInUserEmail();
+    string remarksFileName = email + "_remarks.txt";
+    ifstream remarksFile(remarksFileName);
+
+    if (remarksFile.is_open()) {
+        string line;
+        int yOffset = 200;
+        while (getline(remarksFile, line)) {
+            DrawText(line.c_str(), 400, yOffset, 20, BLACK);
+            yOffset += 30;
+        }
+        remarksFile.close();
+    }
+    else {
+        DrawText("No remarks available", 400, 200, 20, BLACK);
+    }
+}
+
+void Home::DisplayUserAbsences() {
+    // Retrieve the logged-in user's email
+    string email = loginRef.GetLoggedInUserEmail();
+    string absencesFileName = email + "_absences.txt";
+    ifstream absencesFile(absencesFileName);
+
+    if (absencesFile.is_open()) {
+        string line;
+        int yOffset = 200;
+        while (getline(absencesFile, line)) {
+            DrawText(line.c_str(), 400, yOffset, 20, BLACK);
+            yOffset += 30;
+        }
+        absencesFile.close();
+    }
+    else {
+        DrawText("No absences recorded", 400, 200, 20, BLACK);
     }
 }

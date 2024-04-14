@@ -1,1 +1,8 @@
-﻿  onlineSchool.vcxproj -> C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\x64\Debug\onlineSchool.exe
+﻿  home.cpp
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(27,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(27,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(30,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(30,47): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(33,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(33,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  onlineSchool.vcxproj -> F:\school-project-assignment-btl\onlineSchool\x64\Debug\onlineSchool.exe

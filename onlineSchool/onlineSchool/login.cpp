@@ -206,17 +206,15 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
         }
 
         // Create a new text file for the account with the format "email_grades.txt"
-        string fileName = email + "_grades.txt";
-        ofstream gradesFile(fileName);
-
+        string gradesFileName = email + "_grades.txt";
+        ofstream gradesFile(gradesFileName);
         if (gradesFile.is_open()) {
-            // Write the initial structure for the grades file
             gradesFile << "Grades for account: " << email << endl;
             gradesFile << "----------------------------------------" << endl;
 
             // Write initial grades for each subject
             for (int i = 1; i <= 10; ++i) {
-                gradesFile << "Subject " << i << ": " << "N/A" << endl; // Default grade is "N/A"
+                gradesFile << "Subject " << i << ": " << "N/A" << endl;
             }
 
             cout << "Grades file created successfully for account: " << email << endl;
@@ -225,8 +223,34 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
         else {
             cout << "Error: Unable to create grades file for account: " << email << endl;
         }
+        string absencesFileName = email + "_absences.txt";
+        ofstream absencesFile(absencesFileName);
+        if (absencesFile.is_open()) {
+            absencesFile << "Absences for account: " << email << endl;
+            absencesFile << "----------------------------------------" << endl;
+
+            cout << "Absences file created successfully for account: " << email << endl;
+            absencesFile.close();
+        }
+        else {
+            cout << "Error: Unable to create absences file for account: " << email << endl;
+        }
+
+        string remarksFileName = email + "_remarks.txt";
+        ofstream remarksFile(remarksFileName);
+        if (remarksFile.is_open()) {
+            remarksFile << "Remarks for account: " << email << endl;
+            remarksFile << "----------------------------------------" << endl;
+
+            cout << "Remarks file created successfully for account: " << email << endl;
+            remarksFile.close();
+        }
+        else {
+            cout << "Error: Unable to create remarks file for account: " << email << endl;
+        }
     }
 }
+
 
 vector<string> Login::GetGrades(const string& email) {
     vector<string> grades;
