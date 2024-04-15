@@ -15,6 +15,9 @@ public:
     void DisplayUserGrades();
     void DisplayUserAbsences();
     void DisplayUserRemarks();
+    void DrawTestMenu();
+    void HandleTestMenuInput(Vector2 mousePos);
+    void StartTest(const string& subject);
 
 private:
     Rectangle gradesButton;
@@ -32,6 +35,8 @@ private:
     bool displayGrades;
     bool displayAbsences;
     bool displayRemarks;
+    bool displayTestMenu;
+    string selectedSubject;
 };
 
 #endif

@@ -13,6 +13,8 @@ Home::Home(Login& login) : loginRef(login) {
     displayGrades = false;
     displayAbsences = false;
     displayRemarks = false;
+    displayTestMenu = false;
+    selectedSubject = "";
 }
 
 void Home::Update() {
@@ -31,8 +33,13 @@ void Home::Draw() {
         DrawText("Absences", absencesButton.x + 30, absencesButton.y + 15, 20, WHITE);
 
         DrawRectangleRec(remarksButton, remarksButtonHovered ? SKYBLUE : BLUE);
-        DrawText("Remarks", remarksButton.x + 40, remarksButton.y + 15, 20, WHITE);
+        DrawText("Exams", remarksButton.x + 40, remarksButton.y + 15, 20, WHITE);
     }
+
+    if (displayTestMenu) {
+        DrawTestMenu();
+    }
+
     if (displayGrades) {
         DisplayUserGrades();
     }
@@ -63,8 +70,55 @@ void Home::HandleInput() {
         }
         if (remarksButtonHovered) {
             displayRemarks = !displayRemarks;
+            displayTestMenu = true;
         }
     }
+
+    if (displayTestMenu) {
+        HandleTestMenuInput(mousePos);
+    }
+}
+
+void Home::DrawTestMenu() {
+    DrawRectangle(300, 370, 400, 230, GRAY);
+    DrawText("Select a Subject", 350, 380, 20, BLACK);
+
+    vector<string> subjects = { "Biology", "Math", "Chemistry", "Geography", "History" };
+
+    Vector2 buttonPosition = { 320, 420 };
+    float buttonSpacing = 40.0f;
+
+    for (const auto& subject : subjects) {
+        Rectangle buttonRect = { buttonPosition.x, buttonPosition.y, 200, 30 };
+        DrawRectangleRec(buttonRect, WHITE);
+
+        bool buttonHovered = CheckCollisionPointRec(GetMousePosition(), buttonRect);
+
+        if (buttonHovered) {
+            DrawRectangleRec(buttonRect, Fade(GRAY, 0.6f));
+            buttonRect.width *= 1.1f;
+            buttonRect.height *= 1.1f;
+            buttonRect.x -= (buttonRect.width - 200) / 2;
+            buttonRect.y -= (buttonRect.height - 30) / 2;
+        }
+
+        DrawText(subject.c_str(), buttonRect.x + 10, buttonRect.y + 8, 20, BLACK);
+
+        if (buttonHovered && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+            selectedSubject = subject;
+            StartTest(subject);
+        }
+
+        buttonPosition.y += buttonSpacing;
+    }
+}
+
+void Home::StartTest(const string& subject) {
+    cout << "Starting test for subject: " << subject << endl;
+}
+
+void Home::HandleTestMenuInput(Vector2 mousePos) {
+
 }
 
 void Home::DisplayUserGrades() {
