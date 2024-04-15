@@ -40,7 +40,9 @@ private:
     bool isPasswordHidden;
     bool capsLockEnabled;
     bool emailBoxHovered;
+    bool emailBoxClicked;
     bool passwordBoxHovered;
+    bool passwordBoxClicked;
     bool loginButtonHovered;
     bool registerButtonHovered;
 

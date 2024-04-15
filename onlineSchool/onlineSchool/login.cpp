@@ -10,6 +10,8 @@ Login::Login() {
 
     email = "";
     password = "";
+    emailBoxClicked = false;
+    passwordBoxClicked = false;
     loginClicked = false;
     registerClicked = false;
     isPasswordHidden = true;
@@ -34,14 +36,14 @@ void Login::Draw() {
     // Email box
     DrawRectangleLines(emailBox.x, emailBox.y, emailBox.width, emailBox.height, emailBoxOutlineColor);
     DrawText(email.c_str(), emailBox.x + 10, emailBox.y + 15, 20, BLACK);
-    if (!emailBoxHovered&&email.empty()) {
+    if (!emailBoxClicked&&email.empty()) {
         DrawText("Email/username", 420, 267, 20, BLACK);
     }
 
     // Password box
     DrawRectangleLines(passwordBox.x, passwordBox.y, passwordBox.width, passwordBox.height, passwordBoxOutlineColor);
    
-    if (!passwordBoxHovered&&password.empty()) {
+    if (!passwordBoxClicked&&password.empty()) {
         DrawText("Password", 420, 335, 20, BLACK);
     }
     if (isPasswordHidden) {
@@ -78,10 +80,10 @@ void Login::HandleInput() {
     // Handle keyboard input
     if (key != 0) {
         if (key == KEY_BACKSPACE) {
-            if (!email.empty() && emailBoxHovered) {
+            if (!email.empty() && emailBoxClicked) {
                 email.pop_back();
             }
-            else if (!password.empty() && passwordBoxHovered) {
+            else if (!password.empty() && passwordBoxClicked) {
                 password.pop_back();
             }
         }
@@ -90,10 +92,10 @@ void Login::HandleInput() {
                 key -= 32;
             }
 
-            if (emailBoxHovered && email.length() < MAX_EMAIL_LENGTH) {
+            if (emailBoxClicked && email.length() < MAX_EMAIL_LENGTH) {
                 email += static_cast<char>(key);
             }
-            else if (passwordBoxHovered && password.length() < MAX_PASSWORD_LENGTH) {
+            else if (passwordBoxClicked && password.length() < MAX_PASSWORD_LENGTH) {
                 password += static_cast<char>(key);
             }
         }
@@ -107,12 +109,48 @@ void Login::HandleInput() {
     registerButtonHovered = CheckCollisionPointRec(mousePos, registerButton);
 
     // Set active text box outline color
-    emailBoxOutlineColor =  BLACK;
-    passwordBoxOutlineColor =  BLACK;
+    if (emailBoxHovered) {
+        emailBoxOutlineColor = DARKBLUE;
+    }
+    else {
+        emailBoxOutlineColor = BLACK;
+    }
+
+    if (passwordBoxHovered) {
+        passwordBoxOutlineColor = DARKBLUE;
+    }
+    else {
+        passwordBoxOutlineColor = BLACK;
+    }
+
+    //make it able to diselect a box by clicking outside of it
+    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        if (!emailBoxHovered && !passwordBoxHovered) {
+            emailBoxClicked = false;
+            passwordBoxClicked = false;
+        }
+    }
+
+    //Check if the eamil box has been clicked on
+    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        if (emailBoxHovered) {
+            emailBoxClicked = true;
+            passwordBoxClicked = false;
+        }
+    }
+
+    //Check if the password box has been clicked on
+    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        if (passwordBoxHovered) {
+            emailBoxClicked = false;
+            passwordBoxClicked = true;
+        }
+    }
 
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         if (loginButtonHovered) {
             loginClicked = true;
+            // Check if the email exists and if the password matches
             if (CheckLogin(email, password)) {
                 isLoggedIn = true;
                 loggedInUserEmail = email;
