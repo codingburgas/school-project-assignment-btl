@@ -140,7 +140,7 @@ void Login::HandleInput() {
 }
 
 bool Login::CheckLogin(const string& email, const string& password) {
-    ifstream loginFile("login_info.txt");
+    ifstream loginFile("users/login_info.txt");
     if (loginFile.is_open()) {
         string line;
         while (getline(loginFile, line)) {
@@ -169,7 +169,7 @@ bool Login::CheckLogin(const string& email, const string& password) {
 }
 
 bool Login::CheckExistingEmail(const string& email) {
-    ifstream loginFile("login_info.txt");
+    ifstream loginFile("users/login_info.txt");
     if (loginFile.is_open()) {
         string line;
         while (getline(loginFile, line)) {
