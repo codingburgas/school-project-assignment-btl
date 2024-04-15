@@ -21,11 +21,13 @@ private:
     Rectangle absencesButton;
     Rectangle remarksButton;
     Rectangle backButton;
+    Rectangle homeButton;
     Color buttonColor;
     bool gradesButtonHovered;
     bool absencesButtonHovered;
     bool remarksButtonHovered;
     bool backButtonHovered;
+    bool homeButtonHovered;
     Login& loginRef;
     bool displayGrades;
     bool displayAbsences;

@@ -1,13 +1,15 @@
 #include "home.h"
 
 Home::Home(Login& login) : loginRef(login) {
-    gradesButton = { 400, 250, 200, 50 };
-    absencesButton = { 400, 350, 200, 50 };
-    remarksButton = { 400, 450, 200, 50 };
+    homeButton = { 0, 0, 200, 120 };
+    gradesButton = { 0, 120, 200, 200 };
+    absencesButton = { 0, 320, 200, 200 };
+    remarksButton = { 0, 520, 200, 200 };
     buttonColor = GRAY;
     gradesButtonHovered = false;
     absencesButtonHovered = false;
     remarksButtonHovered = false;
+    homeButtonHovered = false;
     displayGrades = false;
     displayAbsences = false;
     displayRemarks = false;
@@ -19,15 +21,16 @@ void Home::Update() {
 
 void Home::Draw() {
     ClearBackground(RAYWHITE);
-    DrawText("Home", 400, 100, 30, RED);
+    DrawRectangleRec(homeButton, homeButtonHovered ? WHITE : LIME);
+    DrawText("Home", homeButton.x + 35, homeButton.y + 23, 50, WHITE);
     if (!displayGrades && !displayAbsences && !displayRemarks) {
-        DrawRectangleRec(gradesButton, gradesButtonHovered ? BLUE : GRAY);
+        DrawRectangleRec(gradesButton, gradesButtonHovered ? SKYBLUE : BLUE);
         DrawText("Grades", gradesButton.x + 50, gradesButton.y + 15, 20, WHITE);
 
-        DrawRectangleRec(absencesButton, absencesButtonHovered ? BLUE : GRAY);
+        DrawRectangleRec(absencesButton, absencesButtonHovered ? SKYBLUE : BLUE);
         DrawText("Absences", absencesButton.x + 30, absencesButton.y + 15, 20, WHITE);
 
-        DrawRectangleRec(remarksButton, remarksButtonHovered ? BLUE : GRAY);
+        DrawRectangleRec(remarksButton, remarksButtonHovered ? SKYBLUE : BLUE);
         DrawText("Remarks", remarksButton.x + 40, remarksButton.y + 15, 20, WHITE);
     }
     if (displayGrades) {
@@ -71,7 +74,7 @@ void Home::DisplayUserGrades() {
     if (!grades.empty()) {
         int yOffset = 200;
         for (const auto& grade : grades) {
-            DrawText(grade.c_str(), 400, yOffset, 20, BLACK);
+            DrawText(grade.c_str(), 40, yOffset, 20, BLACK);
             yOffset += 30;
         }
     }
