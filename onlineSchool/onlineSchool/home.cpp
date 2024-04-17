@@ -26,13 +26,13 @@ void Home::Draw() {
     DrawRectangleRec(homeButton, homeButtonHovered ? WHITE : LIME);
     DrawText("Home", homeButton.x + 35, homeButton.y + 23, 50, WHITE);
     if (!displayGrades && !displayAbsences && !displayRemarks) {
-        DrawRectangleRec(gradesButton, gradesButtonHovered ? SKYBLUE : BLUE);
+        DrawRectangleRec(gradesButton, gradesButtonHovered ? DARKBLUE:BLUE);
         DrawText("Grades", gradesButton.x + 50, gradesButton.y + 15, 20, WHITE);
 
-        DrawRectangleRec(absencesButton, absencesButtonHovered ? SKYBLUE : BLUE);
+        DrawRectangleRec(absencesButton, absencesButtonHovered ? MAROON:RED);
         DrawText("Absences", absencesButton.x + 30, absencesButton.y + 15, 20, WHITE);
 
-        DrawRectangleRec(remarksButton, remarksButtonHovered ? SKYBLUE : BLUE);
+        DrawRectangleRec(remarksButton, remarksButtonHovered ? ORANGE:GOLD);
         DrawText("Exams", remarksButton.x + 40, remarksButton.y + 15, 20, WHITE);
     }
 
