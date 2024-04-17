@@ -15,6 +15,15 @@ Home::Home(Login& login) : loginRef(login) {
     displayRemarks = false;
     displayTestMenu = false;
     selectedSubject = "";
+
+    //Fonts
+    sansSerif = LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-Bold.ttf", 35, 0, 0);
+
+    //Text positions
+    gradesTextPos = { 50, 135 };
+
+    //Font Filters
+    SetTextureFilter(sansSerif.texture, TEXTURE_FILTER_TRILINEAR);
 }
 
 void Home::Update() {
@@ -27,7 +36,7 @@ void Home::Draw() {
     DrawText("Home", homeButton.x + 35, homeButton.y + 23, 50, WHITE);
     if (!displayGrades && !displayAbsences && !displayRemarks) {
         DrawRectangleRec(gradesButton, gradesButtonHovered ? DARKBLUE:BLUE);
-        DrawText("Grades", gradesButton.x + 50, gradesButton.y + 15, 20, WHITE);
+        DrawTextEx(sansSerif, "Grades", gradesTextPos, 35, 0, WHITE);
 
         DrawRectangleRec(absencesButton, absencesButtonHovered ? MAROON:RED);
         DrawText("Absences", absencesButton.x + 30, absencesButton.y + 15, 20, WHITE);

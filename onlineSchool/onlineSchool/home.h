@@ -20,6 +20,8 @@ public:
     void StartTest(const string& subject);
 
 private:
+    Font sansSerif;
+    Vector2 gradesTextPos;
     Rectangle gradesButton;
     Rectangle absencesButton;
     Rectangle remarksButton;

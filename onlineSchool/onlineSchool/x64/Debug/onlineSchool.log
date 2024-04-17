@@ -1,1 +1,10 @@
-﻿  onlineSchool.vcxproj -> C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\x64\Debug\onlineSchool.exe
+﻿  home.cpp
+C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(36,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(36,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(42,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(42,47): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(45,65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(45,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(114,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(114,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  onlineSchool.vcxproj -> C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\x64\Debug\onlineSchool.exe
