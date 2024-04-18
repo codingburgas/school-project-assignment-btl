@@ -20,17 +20,21 @@ public:
     void StartTest(const string& subject);
 
 private:
+    Font sansSerifBold;
     Font sansSerif;
+    Font sansSerifSemiBold;
     Vector2 gradesTextPos;
+    Vector2 absencesTextPos;
+    Vector2 examsTextPos;
     Rectangle gradesButton;
     Rectangle absencesButton;
-    Rectangle remarksButton;
+    Rectangle examsButton;
     Rectangle backButton;
     Rectangle homeButton;
     Color buttonColor;
     bool gradesButtonHovered;
     bool absencesButtonHovered;
-    bool remarksButtonHovered;
+    bool examsButtonHovered;
     bool backButtonHovered;
     bool homeButtonHovered;
     Login& loginRef;

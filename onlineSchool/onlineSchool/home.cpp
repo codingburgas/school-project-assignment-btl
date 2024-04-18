@@ -4,11 +4,11 @@ Home::Home(Login& login) : loginRef(login) {
     homeButton = { 0, 0, 200, 120 };
     gradesButton = { 0, 120, 200, 200 };
     absencesButton = { 0, 320, 200, 200 };
-    remarksButton = { 0, 520, 200, 200 };
+    examsButton = { 0, 520, 200, 200 };
     buttonColor = GRAY;
     gradesButtonHovered = false;
     absencesButtonHovered = false;
-    remarksButtonHovered = false;
+    examsButtonHovered = false;
     homeButtonHovered = false;
     displayGrades = false;
     displayAbsences = false;
@@ -17,13 +17,19 @@ Home::Home(Login& login) : loginRef(login) {
     selectedSubject = "";
 
     //Fonts
-    sansSerif = LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-Bold.ttf", 35, 0, 0);
+    sansSerifBold = LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-Bold.ttf", 35, 0, 0);
+    sansSerif = LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-Regular.ttf", 35, 0, 0);
+    sansSerifSemiBold = LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-SemiBold.ttf", 35, 0, 0);
 
     //Text positions
     gradesTextPos = { 50, 135 };
+    absencesTextPos = {30, 335};
+    examsTextPos = {40, 535};
 
     //Font Filters
+    SetTextureFilter(sansSerifBold.texture, TEXTURE_FILTER_TRILINEAR);
     SetTextureFilter(sansSerif.texture, TEXTURE_FILTER_TRILINEAR);
+    SetTextureFilter(sansSerifSemiBold.texture, TEXTURE_FILTER_TRILINEAR);
 }
 
 void Home::Update() {
@@ -36,13 +42,13 @@ void Home::Draw() {
     DrawText("Home", homeButton.x + 35, homeButton.y + 23, 50, WHITE);
     if (!displayGrades && !displayAbsences && !displayRemarks) {
         DrawRectangleRec(gradesButton, gradesButtonHovered ? DARKBLUE:BLUE);
-        DrawTextEx(sansSerif, "Grades", gradesTextPos, 35, 0, WHITE);
+        DrawTextEx(sansSerifBold, "Grades", gradesTextPos, 35, 0, WHITE);
 
         DrawRectangleRec(absencesButton, absencesButtonHovered ? MAROON:RED);
-        DrawText("Absences", absencesButton.x + 30, absencesButton.y + 15, 20, WHITE);
+        DrawTextEx(sansSerifBold, "Absences", absencesTextPos, 35, 0, WHITE);
 
-        DrawRectangleRec(remarksButton, remarksButtonHovered ? ORANGE:GOLD);
-        DrawText("Exams", remarksButton.x + 40, remarksButton.y + 15, 20, WHITE);
+        DrawRectangleRec(examsButton, examsButtonHovered ? ORANGE:GOLD);
+        DrawTextEx(sansSerifBold, "Exams", examsTextPos, 35, 0, WHITE);
     }
 
     if (displayTestMenu) {
@@ -68,7 +74,7 @@ void Home::HandleInput() {
     Vector2 mousePos = GetMousePosition();
     gradesButtonHovered = CheckCollisionPointRec(mousePos, gradesButton);
     absencesButtonHovered = CheckCollisionPointRec(mousePos, absencesButton);
-    remarksButtonHovered = CheckCollisionPointRec(mousePos, remarksButton);
+    examsButtonHovered = CheckCollisionPointRec(mousePos, examsButton);
 
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         if (gradesButtonHovered) {
@@ -77,7 +83,7 @@ void Home::HandleInput() {
         if (absencesButtonHovered) {
             displayAbsences = !displayAbsences;
         }
-        if (remarksButtonHovered) {
+        if (examsButtonHovered) {
             displayRemarks = !displayRemarks;
             displayTestMenu = true;
         }

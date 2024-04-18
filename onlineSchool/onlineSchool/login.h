@@ -23,7 +23,7 @@ public:
     vector<string> GetGrades(const string& email);
 
 private:
-    const int MAX_EMAIL_LENGTH = 50;
+    const int MAX_EMAIL_LENGTH = 45;
     const int MAX_PASSWORD_LENGTH = 20;
 
     Rectangle line;
@@ -46,6 +46,13 @@ private:
     bool loginButtonHovered;
     bool registerButtonHovered;
 
+    Font sansSerifBold;
+    Font sansSerif;
+    Font sansSerifSemiBold;
+    Vector2 loginButtonTextPos;
+    Vector2 registerButtonTextPos;
+    Vector2 emailBoxTextPos;
+    Vector2 passwordBoxTextPos;
     Color emailBoxOutlineColor;
     Color passwordBoxOutlineColor;
     string loggedInUserEmail;

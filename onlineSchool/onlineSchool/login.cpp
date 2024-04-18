@@ -20,6 +20,22 @@ Login::Login() {
     // Initialize outline colors
     emailBoxOutlineColor = BLACK;
     passwordBoxOutlineColor = BLACK;
+
+    //Fonts
+    sansSerifBold = LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-Bold.ttf", 35, 0, 0);
+    sansSerif= LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-Regular.ttf", 35, 0, 0);
+    sansSerifSemiBold= LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-SemiBold.ttf", 35, 0, 0);
+
+    //Text positions
+    loginButtonTextPos = { 470, 405 };
+    registerButtonTextPos = { 740, 405 };
+    emailBoxTextPos = { 405, 257 };
+    passwordBoxTextPos = { 405, 327 };
+
+    //Font Filters
+    SetTextureFilter(sansSerifBold.texture, TEXTURE_FILTER_TRILINEAR);
+    SetTextureFilter(sansSerif.texture, TEXTURE_FILTER_TRILINEAR);
+    SetTextureFilter(sansSerifSemiBold.texture, TEXTURE_FILTER_TRILINEAR);
 }
 
 void Login::Update() {
@@ -35,35 +51,35 @@ void Login::Draw() {
 
     // Email box
     DrawRectangleLines(emailBox.x, emailBox.y, emailBox.width, emailBox.height, emailBoxOutlineColor);
-    DrawText(email.c_str(), emailBox.x + 10, emailBox.y + 15, 20, BLACK);
+    DrawTextEx(sansSerif, email.c_str(), emailBoxTextPos, 35, 0, BLACK);
     if (!emailBoxClicked&&email.empty()) {
-        DrawText("Email/username", 420, 267, 20, BLACK);
+        DrawTextEx(sansSerif, "Email/username", emailBoxTextPos, 35, 0, DARKGRAY);
     }
 
     // Password box
     DrawRectangleLines(passwordBox.x, passwordBox.y, passwordBox.width, passwordBox.height, passwordBoxOutlineColor);
    
     if (!passwordBoxClicked&&password.empty()) {
-        DrawText("Password", 420, 335, 20, BLACK);
+        DrawTextEx(sansSerif, "Password", passwordBoxTextPos, 35, 0, DARKGRAY);
     }
     if (isPasswordHidden) {
         string hiddenPassword(password.length(), '*');
-        DrawText(hiddenPassword.c_str(), passwordBox.x + 10, passwordBox.y + 15, 20, BLACK);
+        DrawTextEx(sansSerif, hiddenPassword.c_str(), passwordBoxTextPos, 35, 0, BLACK);
     }
     else {
-        DrawText(password.c_str(), passwordBox.x + 10, passwordBox.y + 15, 20, BLACK);
+        DrawTextEx(sansSerif, password.c_str(), passwordBoxTextPos, 35, 0, BLACK);
     }
 
     // Login button
     DrawRectangle(loginButton.x, loginButton.y, loginButton.width, loginButton.height, loginButtonHovered ? BLUE:DARKBLUE);
-    DrawText("Login", loginButton.x + 40, loginButton.y + 15, 20,  WHITE);
+    DrawTextEx(sansSerifBold, "Login", loginButtonTextPos, 35, 0, WHITE);
     if (!loginButtonHovered) {
         
     }
 
     // Register button
     DrawRectangle(registerButton.x, registerButton.y, registerButton.width, registerButton.height, registerButtonHovered ? BLUE:DARKBLUE);
-        DrawText("Register", registerButton.x + 20, registerButton.y + 15, 20, WHITE);
+        DrawTextEx(sansSerifBold, "Register", registerButtonTextPos, 35, 0, WHITE);
 }
 
 void Login::HandleInput() {
