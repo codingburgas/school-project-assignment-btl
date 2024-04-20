@@ -30,6 +30,7 @@ private:
     Rectangle outerBox;
     Rectangle emailBox;
     Rectangle passwordBox;
+    Rectangle passwordButtonCollision;
     Rectangle loginButton;
     Rectangle registerButton;
 
@@ -43,12 +44,14 @@ private:
     bool emailBoxClicked;
     bool passwordBoxHovered;
     bool passwordBoxClicked;
+    bool passwordButtonHovered;
     bool loginButtonHovered;
     bool registerButtonHovered;
 
     Texture2D passwordUnhidden;
     Texture2D passwordHidden;
-    Vector2 passwordButtonsPos;
+    Vector2 passwordUnhiddenPos;
+    Vector2 passwordHiddenPos;
     Font sansSerifBold;
     Font sansSerif;
     Font sansSerifSemiBold;

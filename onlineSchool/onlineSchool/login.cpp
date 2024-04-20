@@ -5,6 +5,7 @@ Login::Login() {
     outerBox = {250, 125, 800, 400};
     emailBox = { 400, 250, 480, 50 };
     passwordBox = { 400, 320, 480, 50 };
+    passwordButtonCollision = { 830, 330, 30, 30 };
     loginButton = { 400, 400, 200, 50 };
     registerButton = { 680, 400, 200, 50 };
 
@@ -23,11 +24,12 @@ Login::Login() {
     passwordBoxOutlineColor = BLACK;
 
     //Textures;
-    passwordUnhidden = LoadTexture("../textures/password/passwordHidden.png");
+    passwordUnhidden = LoadTexture("../textures/password/passwordUnhidden.png");
     passwordHidden = LoadTexture("../textures/password/passwordHidden.png");
 
     //Texture positions
-    passwordButtonsPos = {830, 330};
+    passwordHiddenPos = {830, 330};
+    passwordUnhiddenPos = { 830, 334 };
 
     //Fonts
     sansSerifBold = LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-Bold.ttf", 35, 0, 0);
@@ -66,16 +68,18 @@ void Login::Draw() {
 
     // Password box
     DrawRectangleLines(passwordBox.x, passwordBox.y, passwordBox.width, passwordBox.height, passwordBoxOutlineColor);
-    if (isPasswordHidden) {
-        DrawTextureEx(passwordHidden, passwordButtonsPos, 0, 0.11, WHITE);
+    DrawRectangle(passwordButtonCollision.x, passwordButtonCollision.y, passwordButtonCollision.width, passwordButtonCollision.height, WHITE);
+    if (isPasswordHidden == true) {
+        DrawTextureEx(passwordHidden, passwordHiddenPos, 0, 0.11, WHITE);
     }
     else {
-        DrawTextureEx(passwordUnhidden, passwordButtonsPos, 0, 0.11, WHITE);
+        DrawTextureEx(passwordUnhidden, passwordUnhiddenPos, 0, 0.12, WHITE);
     }
+
     if (!passwordBoxClicked&&password.empty()) {
         DrawTextEx(sansSerif, "Password", passwordBoxTextPos, 35, 0, DARKGRAY);
     }
-    if (isPasswordHidden) {
+    if (isPasswordHidden == true) {
         string hiddenPassword(password.length(), '*');
         DrawTextEx(sansSerif, hiddenPassword.c_str(), passwordBoxTextPos, 35, 0, BLACK);
     }
@@ -141,6 +145,7 @@ void Login::HandleInput() {
     passwordBoxHovered = CheckCollisionPointRec(mousePos, passwordBox);
     loginButtonHovered = CheckCollisionPointRec(mousePos, loginButton);
     registerButtonHovered = CheckCollisionPointRec(mousePos, registerButton);
+    passwordButtonHovered = CheckCollisionPointRec(mousePos, passwordButtonCollision);
 
     // Set active text box outline color
     if (emailBoxHovered) {
@@ -178,6 +183,14 @@ void Login::HandleInput() {
         if (passwordBoxHovered) {
             emailBoxClicked = false;
             passwordBoxClicked = true;
+        }
+    }
+
+    //Check if the password unhide button has been clicked on
+    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        if (passwordButtonHovered) 
+        {
+            isPasswordHidden = !isPasswordHidden;
         }
     }
 
