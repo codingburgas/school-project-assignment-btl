@@ -85,13 +85,16 @@ void Login::Draw() {
 void Login::HandleInput() {
     int key = GetKeyPressed();
 
-    // Handle Caps Lock toggle
+    //Handle Caps Lock toggle
     static bool capsLockPrevState = false;
-    bool capsLockCurrState = IsKeyDown(KEY_CAPS_LOCK);
+    bool capsLockCurrState = IsKeyPressed(KEY_CAPS_LOCK);
     if (capsLockCurrState && !capsLockPrevState) {
         capsLockEnabled = !capsLockEnabled;
     }
     capsLockPrevState = capsLockCurrState;
+
+    bool shiftPressed = IsKeyDown(KEY_LEFT_SHIFT) || IsKeyDown(KEY_RIGHT_SHIFT);
+    bool uppercase = (shiftPressed || capsLockEnabled) && (key >= 'A' && key <= 'Z');
 
     // Handle keyboard input
     if (key != 0) {
@@ -103,17 +106,19 @@ void Login::HandleInput() {
                 password.pop_back();
             }
         }
-        else if ((key >= 32 && key <= 125) && (email.length() < MAX_EMAIL_LENGTH || password.length() < MAX_PASSWORD_LENGTH)) {
-            if ((IsKeyDown(KEY_LEFT_SHIFT) || IsKeyDown(KEY_RIGHT_SHIFT) || capsLockEnabled) && key >= 'a' && key <= 'z') {
-                key -= 32;
-            }
 
-            if (emailBoxClicked && email.length() < MAX_EMAIL_LENGTH) {
-                email += static_cast<char>(key);
-            }
-            else if (passwordBoxClicked && password.length() < MAX_PASSWORD_LENGTH) {
-                password += static_cast<char>(key);
-            }
+        if (uppercase && key >= 'a' && key <= 'z') {
+            key -= 32; // Convert to uppercase
+        }
+        else if (!uppercase && key >= 'A' && key <= 'Z') {
+            key += 32; // Convert to lowercase
+        }
+
+        if (emailBoxClicked && email.length() < MAX_EMAIL_LENGTH && key >= 32 && key <= 126) {
+            email += static_cast<char>(key);
+        }
+        else if (passwordBoxClicked && password.length() < MAX_PASSWORD_LENGTH && key >= 32 && key <= 126) {
+            password += static_cast<char>(key);
         }
     }
 
