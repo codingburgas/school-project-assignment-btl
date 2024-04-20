@@ -15,11 +15,19 @@ Login::Login() {
     loginClicked = false;
     registerClicked = false;
     isPasswordHidden = true;
+    capsLockEnabled = false;
     isLoggedIn = false;
 
     // Initialize outline colors
     emailBoxOutlineColor = BLACK;
     passwordBoxOutlineColor = BLACK;
+
+    //Textures;
+    passwordUnhidden = LoadTexture("../textures/password/passwordHidden.png");
+    passwordHidden = LoadTexture("../textures/password/passwordHidden.png");
+
+    //Texture positions
+    passwordButtonsPos = {830, 330};
 
     //Fonts
     sansSerifBold = LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-Bold.ttf", 35, 0, 0);
@@ -58,7 +66,12 @@ void Login::Draw() {
 
     // Password box
     DrawRectangleLines(passwordBox.x, passwordBox.y, passwordBox.width, passwordBox.height, passwordBoxOutlineColor);
-   
+    if (isPasswordHidden) {
+        DrawTextureEx(passwordHidden, passwordButtonsPos, 0, 0.11, WHITE);
+    }
+    else {
+        DrawTextureEx(passwordUnhidden, passwordButtonsPos, 0, 0.11, WHITE);
+    }
     if (!passwordBoxClicked&&password.empty()) {
         DrawTextEx(sansSerif, "Password", passwordBoxTextPos, 35, 0, DARKGRAY);
     }

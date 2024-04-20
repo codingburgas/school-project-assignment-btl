@@ -46,6 +46,9 @@ private:
     bool loginButtonHovered;
     bool registerButtonHovered;
 
+    Texture2D passwordUnhidden;
+    Texture2D passwordHidden;
+    Vector2 passwordButtonsPos;
     Font sansSerifBold;
     Font sansSerif;
     Font sansSerifSemiBold;
