@@ -136,6 +136,20 @@ void Home::HandleTestMenuInput(Vector2 mousePos) {
 
 }
 
+float Home::CalculateAverageGrade(const string& email) {
+    vector<string> grades = loginRef.GetGrades(email);
+    if (grades.empty()) {
+        return 0.0f; // No grades available
+    }
+    float total = 0.0f;
+    for (const auto& grade : grades) {
+        // Convert string grade to float and accumulate
+        total += stof(grade);
+    }
+    // Calculate average
+    return total / grades.size();
+}
+
 void Home::DisplayUserGrades() {
     // Retrieve the logged-in user's email
     string email = loginRef.GetLoggedInUserEmail();

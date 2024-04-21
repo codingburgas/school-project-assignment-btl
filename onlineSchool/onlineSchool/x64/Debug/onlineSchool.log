@@ -3,7 +3,33 @@ F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(42,54): warn
 F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(42,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(120,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(120,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  main.cpp
+  login.cpp
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(57,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(57,51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(57,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(57,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(63,72): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(63,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(63,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(63,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(70,84): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(70,65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(70,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(70,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(71,127): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(71,96): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(71,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(71,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(73,61): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(76,65): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(91,79): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(91,60): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(91,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(91,30): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(98,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(98,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(98,51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(98,33): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Generating Code...
 raylib.lib(rcore.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(rcore.c.obj)' or at ''; linking object as if no debug info
 raylib.lib(rshapes.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(rshapes.c.obj)' or at ''; linking object as if no debug info
@@ -27,6 +53,5 @@ raylib.lib(egl_context.c.obj) : warning LNK4099: PDB '' was not found with 'rayl
 raylib.lib(osmesa_context.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(osmesa_context.c.obj)' or at ''; linking object as if no debug info
 raylib.lib(win32_module.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(win32_module.c.obj)' or at ''; linking object as if no debug info
 raylib.lib(win32_joystick.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(win32_joystick.c.obj)' or at ''; linking object as if no debug info
-home.obj : error LNK2019: unresolved external symbol "private: float __cdecl Home::CalculateAverageGrade(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?CalculateAverageGrade@Home@@AEAAMAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: void __cdecl Home::DisplayUserGrades(void)" (?DisplayUserGrades@Home@@QEAAXXZ)
 home.obj : error LNK2019: unresolved external symbol "private: int __cdecl Home::FindUserRanking(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?FindUserRanking@Home@@AEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: void __cdecl Home::DisplayUserAbsences(void)" (?DisplayUserAbsences@Home@@QEAAXXZ)
-F:\school-project-assignment-btl\onlineSchool\x64\Debug\onlineSchool.exe : fatal error LNK1120: 2 unresolved externals
+F:\school-project-assignment-btl\onlineSchool\x64\Debug\onlineSchool.exe : fatal error LNK1120: 1 unresolved externals

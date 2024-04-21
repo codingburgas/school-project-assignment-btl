@@ -305,7 +305,6 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
         string gradesFileName = folderName + "/grades.txt";
         ofstream gradesFile(gradesFileName);
         if (gradesFile.is_open()) {
-            gradesFile << "Grades for account: " << email << endl;
             cout << "Grades file created successfully for account: " << email << endl;
             gradesFile.close();
         }
@@ -313,25 +312,18 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
             cout << "Error: Unable to create grades file for account: " << email << endl;
         }
 
-
         string absencesFileName = folderName + "/absences.txt";
         ofstream absencesFile(absencesFileName);
         if (absencesFile.is_open()) {
-            absencesFile << "Absences for account: " << email << endl;
-
             cout << "Absences file created successfully for account: " << email << endl;
             absencesFile.close();
         }
         else {
             cout << "Error: Unable to create absences file for account: " << email << endl;
         }
-
         string remarksFileName = folderName + "/remarks.txt";
         ofstream remarksFile(remarksFileName);
         if (remarksFile.is_open()) {
-            remarksFile << "Remarks for account: " << email << endl;
-
-
             cout << "Remarks file created successfully for account: " << email << endl;
             remarksFile.close();
         }
