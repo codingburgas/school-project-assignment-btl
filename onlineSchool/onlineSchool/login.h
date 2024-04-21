@@ -20,8 +20,8 @@ public:
     bool IsLoggedIn() const;
 
     string GetLoggedInUserEmail() const;
-    vector<string> GetGrades(const string& email);
-
+    vector<std::string> GetGrades(const std::string& username);;
+    vector<std::string> GetAllUserEmails();
 private:
     const int MAX_EMAIL_LENGTH = 45;
     const int MAX_PASSWORD_LENGTH = 20;

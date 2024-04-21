@@ -4,7 +4,7 @@
 #include "raylib.h"
 #include "login.h"
 #include <vector>
-
+#include <numeric>
 class Home {
 public:
     Home(Login& login);
@@ -43,6 +43,10 @@ private:
     bool displayRemarks;
     bool displayTestMenu;
     string selectedSubject;
+    float CalculateAverageGrade(const std::string& username);
+    string FindUserWithHighestAverage();
+    string FindUserWithLowestAverage();
+    int FindUserRanking(const string& email);
 };
 
 #endif

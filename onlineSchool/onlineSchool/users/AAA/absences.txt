@@ -1,2 +1,1 @@
-Absences for account: AAA
-----------------------------------------
+Absences for account: aaa

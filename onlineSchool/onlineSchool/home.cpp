@@ -141,9 +141,13 @@ void Home::DisplayUserGrades() {
     string email = loginRef.GetLoggedInUserEmail();
     vector<string> grades = loginRef.GetGrades(email);
     if (!grades.empty()) {
+        float averageGrade = CalculateAverageGrade(email);
+        cout << "Average Grade: " << averageGrade << endl; // Display the average grade
         int yOffset = 200;
         for (const auto& grade : grades) {
-            DrawText(grade.c_str(), 40, yOffset, 20, BLACK);
+            // Convert std::string to const char* before passing to DrawText
+            const char* gradeText = grade.c_str();
+            DrawText(gradeText, 40, yOffset, 20, BLACK);
             yOffset += 30;
         }
     }
@@ -175,6 +179,14 @@ void Home::DisplayUserRemarks() {
 void Home::DisplayUserAbsences() {
     // Retrieve the logged-in user's email
     string email = loginRef.GetLoggedInUserEmail();
+    int ranking = FindUserRanking(email);
+    if (ranking != -1) {
+        cout << "Your Ranking: " << ranking << endl; // Display the ranking
+    }
+    else {
+        cout << "User not found!" << endl;
+    }
+
     string absencesFileName = email + "_absences.txt";
     ifstream absencesFile(absencesFileName);
 

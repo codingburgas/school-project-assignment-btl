@@ -306,7 +306,6 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
         ofstream gradesFile(gradesFileName);
         if (gradesFile.is_open()) {
             gradesFile << "Grades for account: " << email << endl;
-            gradesFile << "----------------------------------------" << endl;
             cout << "Grades file created successfully for account: " << email << endl;
             gradesFile.close();
         }
@@ -319,7 +318,6 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
         ofstream absencesFile(absencesFileName);
         if (absencesFile.is_open()) {
             absencesFile << "Absences for account: " << email << endl;
-            absencesFile << "----------------------------------------" << endl;
 
             cout << "Absences file created successfully for account: " << email << endl;
             absencesFile.close();
@@ -332,7 +330,7 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
         ofstream remarksFile(remarksFileName);
         if (remarksFile.is_open()) {
             remarksFile << "Remarks for account: " << email << endl;
-            remarksFile << "----------------------------------------" << endl;
+
 
             cout << "Remarks file created successfully for account: " << email << endl;
             remarksFile.close();
@@ -343,9 +341,29 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
     }
 }
 
-vector<string> Login::GetGrades(const string& email) {
-    vector<string> grades;
-    string fileName = "users/" + email + "/grades.txt";
+vector<string> Login::GetAllUserEmails() {
+    vector<string> emails;
+    ifstream loginFile("users/login_info.txt");
+    if (loginFile.is_open()) {
+        string line;
+        while (getline(loginFile, line)) {
+            if (line.find("Email: ") != string::npos) {
+                // Extract email from line
+                string email = line.substr(line.find("Email: ") + 7);
+                emails.push_back(email);
+            }
+        }
+        loginFile.close();
+    }
+    else {
+        cout << "Error: Unable to open login_info.txt!" << endl;
+    }
+    return emails;
+}
+
+std::vector<std::string> Login::GetGrades(const std::string& username) {
+    std::vector<std::string> grades;
+    string fileName = "users/" + username + "/grades.txt";
     ifstream gradesFile(fileName);
 
     if (gradesFile.is_open()) {

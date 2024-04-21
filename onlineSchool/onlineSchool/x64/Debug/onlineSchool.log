@@ -1,28 +1,32 @@
-﻿  login.cpp
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(57,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(57,51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(57,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(57,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(63,72): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(63,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(63,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(63,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(70,84): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(70,65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(70,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(70,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(71,127): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(71,96): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(71,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(71,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(73,61): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(76,65): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(91,79): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(91,60): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(91,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(91,30): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(98,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(98,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(98,51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\onlineSchool\login.cpp(98,33): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  onlineSchool.vcxproj -> C:\Users\GRIGS\Desktop\school-project-assignment-btl\onlineSchool\x64\Debug\onlineSchool.exe
+﻿  home.cpp
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(42,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(42,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(120,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(120,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  main.cpp
+  Generating Code...
+raylib.lib(rcore.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(rcore.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(rshapes.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(rshapes.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(rtextures.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(rtextures.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(rtext.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(rtext.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(utils.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(utils.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(init.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(init.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(monitor.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(monitor.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(window.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(window.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(input.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(input.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(context.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(context.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(win32_window.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(win32_window.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(win32_time.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(win32_time.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(win32_thread.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(win32_thread.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(platform.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(platform.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(vulkan.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(vulkan.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(win32_init.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(win32_init.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(win32_monitor.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(win32_monitor.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(wgl_context.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(wgl_context.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(egl_context.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(egl_context.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(osmesa_context.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(osmesa_context.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(win32_module.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(win32_module.c.obj)' or at ''; linking object as if no debug info
+raylib.lib(win32_joystick.c.obj) : warning LNK4099: PDB '' was not found with 'raylib.lib(win32_joystick.c.obj)' or at ''; linking object as if no debug info
+home.obj : error LNK2019: unresolved external symbol "private: float __cdecl Home::CalculateAverageGrade(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?CalculateAverageGrade@Home@@AEAAMAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: void __cdecl Home::DisplayUserGrades(void)" (?DisplayUserGrades@Home@@QEAAXXZ)
+home.obj : error LNK2019: unresolved external symbol "private: int __cdecl Home::FindUserRanking(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?FindUserRanking@Home@@AEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: void __cdecl Home::DisplayUserAbsences(void)" (?DisplayUserAbsences@Home@@QEAAXXZ)
+F:\school-project-assignment-btl\onlineSchool\x64\Debug\onlineSchool.exe : fatal error LNK1120: 2 unresolved externals
