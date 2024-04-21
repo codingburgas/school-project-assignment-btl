@@ -150,6 +150,20 @@ float Home::CalculateAverageGrade(const string& email) {
     return total / grades.size();
 }
 
+string Home::FindUserWithHighestAverage() {
+    vector<string> allUsers = loginRef.GetAllUserEmails();
+    string highestUser = "";
+    float highestAverage = 0.0f;
+    for (const auto& user : allUsers) {
+        float average = CalculateAverageGrade(user);
+        if (average > highestAverage) {
+            highestAverage = average;
+            highestUser = user;
+        }
+    }
+    return highestUser;
+}
+
 string Home::FindUserWithLowestAverage() {
     vector<string> allUsers = loginRef.GetAllUserEmails();
     string lowestUser = "";
