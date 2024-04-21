@@ -201,19 +201,26 @@ void Home::DisplayUserGrades() {
     vector<string> grades = loginRef.GetGrades(email);
     if (!grades.empty()) {
         float averageGrade = CalculateAverageGrade(email);
-        cout << "Average Grade: " << averageGrade << endl; // Display the average grade
         int yOffset = 200;
         for (const auto& grade : grades) {
             // Convert std::string to const char* before passing to DrawText
             const char* gradeText = grade.c_str();
-            DrawText(gradeText, 40, yOffset, 20, BLACK);
+            DrawText(gradeText, 440, yOffset, 20, BLACK); // Adjusted x-coordinate to 440
             yOffset += 30;
         }
+        string averageText = "Average Grade: ";
+        averageText += to_string(averageGrade);
+        size_t decimalPos = averageText.find('.') + 3;
+        if (averageText.size() > decimalPos)
+            averageText.erase(decimalPos);
+        const char* averageTextChar = averageText.c_str();
+        DrawText(averageTextChar, 440, yOffset, 20, BLACK); // Adjusted x-coordinate to 440
     }
     else {
         DrawText("No grades available", 400, 200, 20, BLACK);
     }
 }
+
 
 void Home::DisplayUserRemarks() {
     // Retrieve the logged-in user's email

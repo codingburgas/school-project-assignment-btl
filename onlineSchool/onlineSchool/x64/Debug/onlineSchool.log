@@ -1,1 +1,7 @@
-﻿  onlineSchool.vcxproj -> C:\Users\Kaloyan\Downloads\ProjectToPushCockIn\school-project-assignment-btl\onlineSchool\x64\Debug\onlineSchool.exe
+﻿  home.cpp
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(43,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(43,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(121,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(121,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(191,50): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+  onlineSchool.vcxproj -> F:\school-project-assignment-btl\onlineSchool\x64\Debug\onlineSchool.exe
