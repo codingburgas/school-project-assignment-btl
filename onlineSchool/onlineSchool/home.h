@@ -3,11 +3,14 @@
 
 #include "raylib.h"
 #include "login.h"
+#include "exam.h"
 #include <vector>
+#include <cstdlib>
 #include <numeric>
 class Home {
 public:
     Home(Login& login);
+    Home() = default;
 
     void Update();
     void Draw();
@@ -18,8 +21,12 @@ public:
     void DrawTestMenu();
     void HandleTestMenuInput(Vector2 mousePos);
     void StartTest(const string& subject);
+    bool isTesting = false;
 
 private:
+    float questionCount = 20;
+    int counter = 0;
+    float correctAnswersCount = 0;
     Font sansSerifBold;
     Font sansSerif;
     Font sansSerifSemiBold;

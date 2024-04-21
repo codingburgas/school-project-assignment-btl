@@ -131,11 +131,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="exam.cpp" />
     <ClCompile Include="home.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="exam.h" />
     <ClInclude Include="home.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="user.h" />

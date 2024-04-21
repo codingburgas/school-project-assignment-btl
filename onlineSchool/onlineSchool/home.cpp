@@ -1,4 +1,5 @@
 #include "home.h"
+#include "exam.h"
 
 Home::Home(Login& login) : loginRef(login) {
     homeButton = { 0, 0, 200, 120 };
@@ -121,7 +122,7 @@ void Home::DrawTestMenu() {
 
         if (buttonHovered && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
             selectedSubject = subject;
-            StartTest(subject);
+            isTesting = true;
         }
 
         buttonPosition.y += buttonSpacing;
