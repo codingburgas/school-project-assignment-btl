@@ -19,12 +19,21 @@ public:
     void DisplayUserRankings();
     void DisplayUserRemarks();
     void DrawTestMenu();
-    void HandleTestMenuInput(Vector2 mousePos);
+
     void StartTest(const string& subject);
     bool isTesting = false;
     static string formatFloat(float value);
 
 private:
+    enum class Section {
+        Home,
+        Grades,
+        Rankings,
+        Exams,
+        TestMenu
+    };
+
+    Section activeSection = Section::Home;
     float questionCount = 20;
     int counter = 0;
     float correctAnswersCount = 0;
@@ -51,7 +60,7 @@ private:
     bool displayRemarks;
     bool displayTestMenu;
     string selectedSubject;
-    float CalculateAverageGrade(const std::string& username);
+    float CalculateAverageGrade(const string& username);
     string FindUserWithHighestAverage();
     string FindUserWithLowestAverage();
     int FindUserRanking(const string& email);

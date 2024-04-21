@@ -39,37 +39,33 @@ void Home::Update() {
 
 void Home::Draw() {
     ClearBackground(RAYWHITE);
-    DrawRectangleRec(homeButton, homeButtonHovered ? WHITE : LIME);
-    DrawText("Home", homeButton.x + 35, homeButton.y + 23, 50, WHITE);
-    if (!displayGrades && !displayRankings && !displayRemarks) {
-        DrawRectangleRec(gradesButton, gradesButtonHovered ? DARKBLUE:BLUE);
-        DrawTextEx(sansSerifBold, "Grades", gradesTextPos, 35, 0, WHITE);
 
-        DrawRectangleRec(rankingsButton, rankingsButtonHovered ? MAROON:RED);
-        DrawTextEx(sansSerifBold, "Rankings", rankingsTextPos, 35, 0, WHITE);
+    DrawRectangleRec(homeButton, LIME);
+    DrawText("BTL", homeButton.x + 35, homeButton.y + 23, 50, WHITE);
 
-        DrawRectangleRec(examsButton, examsButtonHovered ? ORANGE:GOLD);
-        DrawTextEx(sansSerifBold, "Exams", examsTextPos, 35, 0, WHITE);
-    }
+    DrawRectangleRec(gradesButton, activeSection == Section::Grades ? DARKBLUE : BLUE);
+    DrawTextEx(sansSerifBold, "Grades", gradesTextPos, 35, 0, WHITE);
 
-    if (displayTestMenu) {
-        DrawTestMenu();
-    }
+    DrawRectangleRec(rankingsButton, activeSection == Section::Rankings ? MAROON : RED);
+    DrawTextEx(sansSerifBold, "Rankings", rankingsTextPos, 35, 0, WHITE);
 
-    if (displayGrades) {
+    DrawRectangleRec(examsButton, activeSection == Section::Exams ? ORANGE : GOLD);
+    DrawTextEx(sansSerifBold, "Exams", examsTextPos, 35, 0, WHITE);
+
+    switch (activeSection) {
+    case Section::Grades:
         DisplayUserGrades();
-    }
-
-    if (displayRankings) {
+        break;
+    case Section::Rankings:
         DisplayUserRankings();
-    }
-
-    if (displayRemarks) {
-        DisplayUserRemarks();
+        break;
+    case Section::Exams:
+        DrawTestMenu();
+        break;
+    default:
+        break;
     }
 }
-
-
 
 void Home::HandleInput() {
     Vector2 mousePos = GetMousePosition();
@@ -79,19 +75,14 @@ void Home::HandleInput() {
 
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         if (gradesButtonHovered) {
-            displayGrades = !displayGrades;
+            activeSection = Section::Grades;
         }
-        if (rankingsButtonHovered) {
-            displayRankings = !displayRankings;
+        else if (rankingsButtonHovered) {
+            activeSection = Section::Rankings;
         }
-        if (examsButtonHovered) {
-            displayRemarks = !displayRemarks;
-            displayTestMenu = true;
+        else if (examsButtonHovered) {
+            activeSection = Section::Exams;
         }
-    }
-
-    if (displayTestMenu) {
-        HandleTestMenuInput(mousePos);
     }
 }
 
@@ -131,10 +122,6 @@ void Home::DrawTestMenu() {
 
 void Home::StartTest(const string& subject) {
     cout << "Starting test for subject: " << subject << endl;
-}
-
-void Home::HandleTestMenuInput(Vector2 mousePos) {
-
 }
 
 float Home::CalculateAverageGrade(const string& email) {

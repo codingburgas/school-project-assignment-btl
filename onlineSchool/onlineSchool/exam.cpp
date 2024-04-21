@@ -44,11 +44,6 @@ void Exam::GetTestQuestions(const string& subject) {
         }
     }
     correctAnswers[counter] = line2[line2.length() - 1];
-    // Keep this for testing
-    /*
-    std::cout << counter + 1 << ". " << line << endl;
-    std::cout << line2.substr(0, line2.length() - 2) << endl;
-    */
 }
 
 float Exam::StartTest(const string& subject) {
@@ -56,7 +51,6 @@ float Exam::StartTest(const string& subject) {
     LoadTestQuestions(subject);
     for (int i = 0; i < questionCount; i++) {
         GetTestQuestions(subject);
-        //cin >> userAnswers[i];
         if (userAnswers[i] == correctAnswers[i]) {
             correctAnswersCount++;
         }
