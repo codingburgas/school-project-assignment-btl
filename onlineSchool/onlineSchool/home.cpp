@@ -150,6 +150,22 @@ float Home::CalculateAverageGrade(const string& email) {
     return total / grades.size();
 }
 
+int Home::FindUserRanking(const string& email) {
+    vector<string> allUsers = loginRef.GetAllUserEmails();
+    vector<float> allAverages;
+    for (const auto& user : allUsers) {
+        allAverages.push_back(CalculateAverageGrade(user));
+    }
+    sort(allAverages.begin(), allAverages.end(), greater<float>());
+    auto it = find(allAverages.begin(), allAverages.end(), CalculateAverageGrade(email));
+    if (it != allAverages.end()) {
+        return distance(allAverages.begin(), it) + 1;
+    }
+    else {
+        return -1; // User not found
+    }
+}
+
 void Home::DisplayUserGrades() {
     // Retrieve the logged-in user's email
     string email = loginRef.GetLoggedInUserEmail();
