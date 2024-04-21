@@ -311,16 +311,6 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
         else {
             cout << "Error: Unable to create grades file for account: " << email << endl;
         }
-
-        string absencesFileName = folderName + "/absences.txt";
-        ofstream absencesFile(absencesFileName);
-        if (absencesFile.is_open()) {
-            cout << "Absences file created successfully for account: " << email << endl;
-            absencesFile.close();
-        }
-        else {
-            cout << "Error: Unable to create absences file for account: " << email << endl;
-        }
         string remarksFileName = folderName + "/remarks.txt";
         ofstream remarksFile(remarksFileName);
         if (remarksFile.is_open()) {
@@ -353,8 +343,8 @@ vector<string> Login::GetAllUserEmails() {
     return emails;
 }
 
-std::vector<std::string> Login::GetGrades(const std::string& username) {
-    std::vector<std::string> grades;
+vector<string> Login::GetGrades(const string& username) {
+    vector<string> grades;
     string fileName = "users/" + username + "/grades.txt";
     ifstream gradesFile(fileName);
 

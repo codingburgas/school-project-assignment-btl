@@ -16,12 +16,13 @@ public:
     void Draw();
     void HandleInput();
     void DisplayUserGrades();
-    void DisplayUserAbsences();
+    void DisplayUserRankings();
     void DisplayUserRemarks();
     void DrawTestMenu();
     void HandleTestMenuInput(Vector2 mousePos);
     void StartTest(const string& subject);
     bool isTesting = false;
+    static string formatFloat(float value);
 
 private:
     float questionCount = 20;
@@ -31,22 +32,22 @@ private:
     Font sansSerif;
     Font sansSerifSemiBold;
     Vector2 gradesTextPos;
-    Vector2 absencesTextPos;
+    Vector2 rankingsTextPos;
     Vector2 examsTextPos;
     Rectangle gradesButton;
-    Rectangle absencesButton;
+    Rectangle rankingsButton;
     Rectangle examsButton;
     Rectangle backButton;
     Rectangle homeButton;
     Color buttonColor;
     bool gradesButtonHovered;
-    bool absencesButtonHovered;
+    bool rankingsButtonHovered;
     bool examsButtonHovered;
     bool backButtonHovered;
     bool homeButtonHovered;
     Login& loginRef;
     bool displayGrades;
-    bool displayAbsences;
+    bool displayRankings;
     bool displayRemarks;
     bool displayTestMenu;
     string selectedSubject;

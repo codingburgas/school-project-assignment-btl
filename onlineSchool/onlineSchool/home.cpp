@@ -4,15 +4,15 @@
 Home::Home(Login& login) : loginRef(login) {
     homeButton = { 0, 0, 200, 120 };
     gradesButton = { 0, 120, 200, 200 };
-    absencesButton = { 0, 320, 200, 200 };
+    rankingsButton = { 0, 320, 200, 200 };
     examsButton = { 0, 520, 200, 200 };
     buttonColor = GRAY;
     gradesButtonHovered = false;
-    absencesButtonHovered = false;
+    rankingsButtonHovered = false;
     examsButtonHovered = false;
     homeButtonHovered = false;
     displayGrades = false;
-    displayAbsences = false;
+    displayRankings = false;
     displayRemarks = false;
     displayTestMenu = false;
     selectedSubject = "";
@@ -24,7 +24,7 @@ Home::Home(Login& login) : loginRef(login) {
 
     //Text positions
     gradesTextPos = { 50, 135 };
-    absencesTextPos = {30, 335};
+    rankingsTextPos = {30, 335};
     examsTextPos = {40, 535};
 
     //Font Filters
@@ -41,12 +41,12 @@ void Home::Draw() {
     ClearBackground(RAYWHITE);
     DrawRectangleRec(homeButton, homeButtonHovered ? WHITE : LIME);
     DrawText("Home", homeButton.x + 35, homeButton.y + 23, 50, WHITE);
-    if (!displayGrades && !displayAbsences && !displayRemarks) {
+    if (!displayGrades && !displayRankings && !displayRemarks) {
         DrawRectangleRec(gradesButton, gradesButtonHovered ? DARKBLUE:BLUE);
         DrawTextEx(sansSerifBold, "Grades", gradesTextPos, 35, 0, WHITE);
 
-        DrawRectangleRec(absencesButton, absencesButtonHovered ? MAROON:RED);
-        DrawTextEx(sansSerifBold, "Absences", absencesTextPos, 35, 0, WHITE);
+        DrawRectangleRec(rankingsButton, rankingsButtonHovered ? MAROON:RED);
+        DrawTextEx(sansSerifBold, "Rankings", rankingsTextPos, 35, 0, WHITE);
 
         DrawRectangleRec(examsButton, examsButtonHovered ? ORANGE:GOLD);
         DrawTextEx(sansSerifBold, "Exams", examsTextPos, 35, 0, WHITE);
@@ -60,8 +60,8 @@ void Home::Draw() {
         DisplayUserGrades();
     }
 
-    if (displayAbsences) {
-        DisplayUserAbsences();
+    if (displayRankings) {
+        DisplayUserRankings();
     }
 
     if (displayRemarks) {
@@ -74,15 +74,15 @@ void Home::Draw() {
 void Home::HandleInput() {
     Vector2 mousePos = GetMousePosition();
     gradesButtonHovered = CheckCollisionPointRec(mousePos, gradesButton);
-    absencesButtonHovered = CheckCollisionPointRec(mousePos, absencesButton);
+    rankingsButtonHovered = CheckCollisionPointRec(mousePos, rankingsButton);
     examsButtonHovered = CheckCollisionPointRec(mousePos, examsButton);
 
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         if (gradesButtonHovered) {
             displayGrades = !displayGrades;
         }
-        if (absencesButtonHovered) {
-            displayAbsences = !displayAbsences;
+        if (rankingsButtonHovered) {
+            displayRankings = !displayRankings;
         }
         if (examsButtonHovered) {
             displayRemarks = !displayRemarks;
@@ -140,14 +140,12 @@ void Home::HandleTestMenuInput(Vector2 mousePos) {
 float Home::CalculateAverageGrade(const string& email) {
     vector<string> grades = loginRef.GetGrades(email);
     if (grades.empty()) {
-        return 0.0f; // No grades available
+        return 0.0f;
     }
     float total = 0.0f;
     for (const auto& grade : grades) {
-        // Convert string grade to float and accumulate
         total += stof(grade);
     }
-    // Calculate average
     return total / grades.size();
 }
 
@@ -191,21 +189,19 @@ int Home::FindUserRanking(const string& email) {
         return distance(allAverages.begin(), it) + 1;
     }
     else {
-        return -1; // User not found
+        return -1;
     }
 }
 
 void Home::DisplayUserGrades() {
-    // Retrieve the logged-in user's email
     string email = loginRef.GetLoggedInUserEmail();
     vector<string> grades = loginRef.GetGrades(email);
     if (!grades.empty()) {
         float averageGrade = CalculateAverageGrade(email);
         int yOffset = 200;
         for (const auto& grade : grades) {
-            // Convert std::string to const char* before passing to DrawText
             const char* gradeText = grade.c_str();
-            DrawText(gradeText, 440, yOffset, 20, BLACK); // Adjusted x-coordinate to 440
+            DrawText(gradeText, 440, yOffset, 20, BLACK); 
             yOffset += 30;
         }
         string averageText = "Average Grade: ";
@@ -214,7 +210,7 @@ void Home::DisplayUserGrades() {
         if (averageText.size() > decimalPos)
             averageText.erase(decimalPos);
         const char* averageTextChar = averageText.c_str();
-        DrawText(averageTextChar, 440, yOffset, 20, BLACK); // Adjusted x-coordinate to 440
+        DrawText(averageTextChar, 440, yOffset, 20, BLACK);
     }
     else {
         DrawText("No grades available", 400, 200, 20, BLACK);
@@ -223,7 +219,6 @@ void Home::DisplayUserGrades() {
 
 
 void Home::DisplayUserRemarks() {
-    // Retrieve the logged-in user's email
     string email = loginRef.GetLoggedInUserEmail();
     string remarksFileName = email + "_remarks.txt";
     ifstream remarksFile(remarksFileName);
@@ -242,30 +237,36 @@ void Home::DisplayUserRemarks() {
     }
 }
 
-void Home::DisplayUserAbsences() {
-    // Retrieve the logged-in user's email
+void Home::DisplayUserRankings() {
     string email = loginRef.GetLoggedInUserEmail();
     int ranking = FindUserRanking(email);
-    if (ranking != -1) {
-        cout << "Your Ranking: " << ranking << endl; // Display the ranking
+    string highestUser = FindUserWithHighestAverage();
+    float highestAverage = 0.0f;
+    if (!highestUser.empty()) {
+        highestAverage = CalculateAverageGrade(highestUser);
     }
-    else {
-        cout << "User not found!" << endl;
+    string lowestUser = FindUserWithLowestAverage();
+    float lowestAverage = 0.0f;
+    if (!lowestUser.empty()) {
+        lowestAverage = CalculateAverageGrade(lowestUser);
     }
 
-    string absencesFileName = email + "_absences.txt";
-    ifstream absencesFile(absencesFileName);
+    string rankingText = "Your Ranking: " + to_string(ranking);
+    DrawText(rankingText.c_str(), 400, 200, 20, BLACK);
 
-    if (absencesFile.is_open()) {
-        string line;
-        int yOffset = 200;
-        while (getline(absencesFile, line)) {
-            DrawText(line.c_str(), 400, yOffset, 20, BLACK);
-            yOffset += 30;
-        }
-        absencesFile.close();
+    string highestText = "Highest: " + highestUser + " (Average Grade: " + formatFloat(highestAverage) + ")";
+    DrawText(highestText.c_str(), 400, 230, 20, BLACK);
+
+    string lowestText = "Lowest: " + lowestUser + " (Average Grade: " + formatFloat(lowestAverage) + ")";
+    DrawText(lowestText.c_str(), 400, 260, 20, BLACK);
+}
+
+string Home::formatFloat(float value) {
+    string result = to_string(value);
+    size_t decimalPos = result.find('.');
+    if (decimalPos != string::npos && result.length() > decimalPos + 3) {
+        result = result.substr(0, decimalPos + 3);
     }
-    else {
-        DrawText("No absences recorded", 400, 200, 20, BLACK);
-    }
+
+    return result;
 }
