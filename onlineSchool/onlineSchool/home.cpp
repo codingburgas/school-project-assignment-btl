@@ -40,23 +40,46 @@ void Home::Update() {
 void Home::Draw() {
     ClearBackground(RAYWHITE);
 
-    DrawRectangleRec(homeButton, LIME);
-    DrawText("BTL", homeButton.x + 35, homeButton.y + 23, 50, WHITE);
+    // Define the sidebar color (#2F75B5)
+    Color sidebarColor = ColorFromNormalized({ 0.18f, 0.46f, 0.71f, 1.0f });
 
-    DrawRectangleRec(gradesButton, activeSection == Section::Grades ? DARKBLUE : BLUE);
-    DrawTextEx(sansSerifBold, "Grades", gradesTextPos, 35, 0, WHITE);
+    DrawRectangle(0, 0, 200, GetScreenHeight(), sidebarColor);
 
-    DrawRectangleRec(rankingsButton, activeSection == Section::Rankings ? MAROON : RED);
-    DrawTextEx(sansSerifBold, "Rankings", rankingsTextPos, 35, 0, WHITE);
+    DrawText("BTL", 50, 20, 50, WHITE);
 
-    DrawRectangleRec(examsButton, activeSection == Section::Exams ? ORANGE : GOLD);
-    DrawTextEx(sansSerifBold, "Exams", examsTextPos, 35, 0, WHITE);
+    Vector2 textOffset = { 20, 10 };
+    DrawText("Grades", gradesButton.x + gradesButton.width / 2 - MeasureText("Grades", 30) / 2,
+        gradesButton.y + gradesButton.height / 2 - 15, 30, BLACK);
+    DrawText("Rankings", rankingsButton.x + rankingsButton.width / 2 - MeasureText("Rankings", 30) / 2,
+        rankingsButton.y + rankingsButton.height / 2 - 15, 30, BLACK);
+    DrawText("Exams", examsButton.x + examsButton.width / 2 - MeasureText("Exams", 30) / 2,
+        examsButton.y + examsButton.height / 2 - 15, 30, BLACK);
 
+    // Highlight the hovered button
+    if (CheckCollisionPointRec(GetMousePosition(), gradesButton)) {
+        DrawRectangleRec(gradesButton, Fade(LIGHTGRAY, 0.6f));
+        DrawText("Grades", gradesButton.x + gradesButton.width / 2 - MeasureText("Grades", 30) / 2,
+            gradesButton.y + gradesButton.height / 2 - 15, 30, BLACK);
+    }
+    else if (CheckCollisionPointRec(GetMousePosition(), rankingsButton)) {
+        DrawRectangleRec(rankingsButton, Fade(LIGHTGRAY, 0.6f));
+        DrawText("Rankings", rankingsButton.x + rankingsButton.width / 2 - MeasureText("Rankings", 30) / 2,
+            rankingsButton.y + rankingsButton.height / 2 - 15, 30, BLACK);
+    }
+    else if (CheckCollisionPointRec(GetMousePosition(), examsButton)) {
+        DrawRectangleRec(examsButton, Fade(LIGHTGRAY, 0.6f));
+        DrawText("Exams", examsButton.x + examsButton.width / 2 - MeasureText("Exams", 30) / 2,
+            examsButton.y + examsButton.height / 2 - 15, 30, BLACK);
+    }
+
+    // Draw the content based on the active section
     switch (activeSection) {
     case Section::Grades:
+        DrawRectangle(250, 100, 700, 500, LIGHTGRAY);
         DisplayUserGrades();
         break;
     case Section::Rankings:
+        DrawRectangle(250, 100, 700, 500, LIGHTGRAY);
         DisplayUserRankings();
         break;
     case Section::Exams:
@@ -69,18 +92,16 @@ void Home::Draw() {
 
 void Home::HandleInput() {
     Vector2 mousePos = GetMousePosition();
-    gradesButtonHovered = CheckCollisionPointRec(mousePos, gradesButton);
-    rankingsButtonHovered = CheckCollisionPointRec(mousePos, rankingsButton);
-    examsButtonHovered = CheckCollisionPointRec(mousePos, examsButton);
 
+    // Check for button clicks
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-        if (gradesButtonHovered) {
+        if (CheckCollisionPointRec(mousePos, gradesButton)) {
             activeSection = Section::Grades;
         }
-        else if (rankingsButtonHovered) {
+        else if (CheckCollisionPointRec(mousePos, rankingsButton)) {
             activeSection = Section::Rankings;
         }
-        else if (examsButtonHovered) {
+        else if (CheckCollisionPointRec(mousePos, examsButton)) {
             activeSection = Section::Exams;
         }
     }
@@ -186,18 +207,19 @@ void Home::DisplayUserGrades() {
     if (!grades.empty()) {
         float averageGrade = CalculateAverageGrade(email);
         int yOffset = 200;
+
+        DrawText("Your Grades", 400, 150, 30, BLACK);
+        DrawLine(400, 180, 800, 180, BLACK);
+
         for (const auto& grade : grades) {
-            const char* gradeText = grade.c_str();
-            DrawText(gradeText, 440, yOffset, 20, BLACK); 
-            yOffset += 30;
+            DrawRectangle(400, yOffset - 10, 200, 30, RAYWHITE);
+            DrawText(grade.c_str(), 440, yOffset, 20, BLACK);
+            yOffset += 40;
         }
-        string averageText = "Average Grade: ";
-        averageText += to_string(averageGrade);
-        size_t decimalPos = averageText.find('.') + 3;
-        if (averageText.size() > decimalPos)
-            averageText.erase(decimalPos);
-        const char* averageTextChar = averageText.c_str();
-        DrawText(averageTextChar, 440, yOffset, 20, BLACK);
+        yOffset += 20;
+
+        string averageText = "Average Grade: " + formatFloat(averageGrade);
+        DrawText(averageText.c_str(), 400, yOffset, 20, BLACK);
     }
     else {
         DrawText("No grades available", 400, 200, 20, BLACK);
@@ -238,6 +260,10 @@ void Home::DisplayUserRankings() {
         lowestAverage = CalculateAverageGrade(lowestUser);
     }
 
+    DrawRectangle(400, 190, 400, 120, RAYWHITE);
+    DrawText("User Rankings", 400, 150, 30, BLACK);
+    DrawLine(400, 180, 800, 180, BLACK);
+
     string rankingText = "Your Ranking: " + to_string(ranking);
     DrawText(rankingText.c_str(), 400, 200, 20, BLACK);
 
@@ -246,6 +272,9 @@ void Home::DisplayUserRankings() {
 
     string lowestText = "Lowest: " + lowestUser + " (Average Grade: " + formatFloat(lowestAverage) + ")";
     DrawText(lowestText.c_str(), 400, 260, 20, BLACK);
+
+    DrawText(" ", 400, 290, 20, BLACK);
+    DrawText(" ", 400, 320, 20, BLACK);
 }
 
 string Home::formatFloat(float value) {
