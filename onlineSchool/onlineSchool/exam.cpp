@@ -81,6 +81,16 @@ float Exam::StartTest(const string& subject) {
         grade = '6';
     }
 
+    // Write the grade to the grades.txt file
+    ofstream gradesFile("grades.txt", ios::app);
+    if (gradesFile.is_open()) {
+        gradesFile << "Subject: " << subject << ", Grade: " << grade << endl;
+        gradesFile.close();
+    }
+    else {
+        cerr << "Unable to open grades.txt for writing." << endl;
+    }
+
     cout << "You answered " << correctAnswersCount << " questions correctly, which is " << percentage << "%." << endl;
     cout << "Your grade is: " << grade << endl;
 

@@ -166,8 +166,7 @@ float Home::CalculateAverageGrade(const string& email) {
                     count++;
                 }
                 catch (...) {
-                    // Handle error when there are no grades available
-                    cerr << "Error parsing grade: " << grade << endl;
+                   
                 }
             }
         }
