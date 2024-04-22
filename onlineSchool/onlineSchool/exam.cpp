@@ -62,5 +62,27 @@ float Exam::StartTest(const string& subject) {
             correctAnswersCount++;
         }
     }
-    return (correctAnswersCount / questionCount) * 100;
+    float percentage = (correctAnswersCount / static_cast<float>(questionCount)) * 100;
+
+    char grade;
+    if (percentage <= 50) {
+        grade = '2';
+    }
+    else if (percentage <= 65) {
+        grade = '3';
+    }
+    else if (percentage <= 75) {
+        grade = '4';
+    }
+    else if (percentage <= 85) {
+        grade = '5';
+    }
+    else {
+        grade = '6';
+    }
+
+    cout << "You answered " << correctAnswersCount << " questions correctly, which is " << percentage << "%." << endl;
+    cout << "Your grade is: " << grade << endl;
+
+    return percentage;
 }
