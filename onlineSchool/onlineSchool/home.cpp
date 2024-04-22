@@ -1,6 +1,6 @@
 #include "home.h"
 #include "exam.h"
-
+#include <sstream>
 Home::Home(Login& login) : loginRef(login) {
     homeButton = { 0, 0, 200, 120 };
     gradesButton = { 0, 120, 200, 200 };
@@ -145,15 +145,39 @@ void Home::StartTest(const string& subject) {
 }
 
 float Home::CalculateAverageGrade(const string& email) {
-    vector<string> grades = loginRef.GetGrades(email);
-    if (grades.empty()) {
+    vector<string> gradeLines = loginRef.GetGrades(email);
+    if (gradeLines.empty()) {
         return 0.0f;
     }
+
     float total = 0.0f;
-    for (const auto& grade : grades) {
-        total += stof(grade);
+    int count = 0;
+
+    for (const auto& line : gradeLines) {
+        size_t separatorPos = line.find(':');
+        if (separatorPos != string::npos && separatorPos + 1 < line.length()) {
+            string gradesStr = line.substr(separatorPos + 1);
+            stringstream ss(gradesStr);
+            string grade;
+            while (getline(ss, grade, ',')) {
+                try {
+                    float individualGrade = stof(grade);
+                    total += individualGrade;
+                    count++;
+                }
+                catch (...) {
+                    // Handle error when there are no grades available
+                    cerr << "Error parsing grade: " << grade << endl;
+                }
+            }
+        }
     }
-    return total / grades.size();
+    if (count > 0) {
+        return total / count;
+    }
+    else {
+        return 0.0f;
+    }
 }
 
 string Home::FindUserWithHighestAverage() {
@@ -202,20 +226,26 @@ int Home::FindUserRanking(const string& email) {
 
 void Home::DisplayUserGrades() {
     string email = loginRef.GetLoggedInUserEmail();
-    vector<string> grades = loginRef.GetGrades(email);
-    if (!grades.empty()) {
+    vector<string> gradeLines = loginRef.GetGrades(email);
+
+    if (!gradeLines.empty()) {
         float averageGrade = CalculateAverageGrade(email);
         int yOffset = 200;
 
         DrawText("Your Grades", 400, 150, 30, BLACK);
         DrawLine(400, 180, 800, 180, BLACK);
 
-        for (const auto& grade : grades) {
-            DrawRectangle(400, yOffset - 10, 200, 30, RAYWHITE);
-            DrawText(grade.c_str(), 440, yOffset, 20, BLACK);
-            yOffset += 40;
+        for (const auto& line : gradeLines) {
+            // Split the line into subject and grade
+            size_t separatorPos = line.find(':');
+            if (separatorPos != string::npos && separatorPos + 1 < line.length()) {
+                string subject = line.substr(0, separatorPos);
+                string grade = line.substr(separatorPos + 1);
+                DrawText(subject.c_str(), 400, yOffset, 20, BLACK);
+                DrawText(grade.c_str(), 600, yOffset, 20, BLACK);
+                yOffset += 40;
+            }
         }
-        yOffset += 20;
 
         string averageText = "Average Grade: " + formatFloat(averageGrade);
         DrawText(averageText.c_str(), 400, yOffset, 20, BLACK);

@@ -1,0 +1,5 @@
+Biology: 2, 1, 5
+Math: 3, 1, 5
+Chemistry: 4, 1, 2
+Geography: 5, 1, 1
+History: 6, 1, 6

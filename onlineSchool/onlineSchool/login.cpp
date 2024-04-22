@@ -305,15 +305,25 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
             cout << "Error: Unable to create folder for account: " << email << endl;
             return;
         }
+
+        // Add default grades to grades.txt
         string gradesFileName = folderName + "/grades.txt";
         ofstream gradesFile(gradesFileName);
         if (gradesFile.is_open()) {
+            // Add default grades
+            gradesFile << "Biology: " << endl;
+            gradesFile << "Math: " << endl;
+            gradesFile << "Chemistry: " << endl;
+            gradesFile << "Geography: " << endl;
+            gradesFile << "History: " << endl;
             cout << "Grades file created successfully for account: " << email << endl;
             gradesFile.close();
         }
         else {
             cout << "Error: Unable to create grades file for account: " << email << endl;
         }
+
+        // Create remarks.txt file (if needed)
         string remarksFileName = folderName + "/remarks.txt";
         ofstream remarksFile(remarksFileName);
         if (remarksFile.is_open()) {
