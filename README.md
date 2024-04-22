@@ -8,9 +8,9 @@
 * <a href="https://github.com/SGMikov21">**Stelian Mikov**</a> - *Scrum trainer*
 * <a href="https://github.com/DRBuzin21">**Daniel Buzin**</a> - *Back-end developer* 
 * <a href="https://github.com/KRRusev21">**Kevin Rusev**</a> - *Back-end developer* 
-* <a href="https://github.com/MSBarev21">**Milko Barev**</a> - *Back-end developer*
-* <a href="https://github.com/KDIliev21">**Kaloyan Iliev**</a> - *Back-end developer*
-* <a href="https://github.com/SNRadev21">**Stanislav Radev**</a> - *Back-end developer* 
+* <a href="https://github.com/MSBarev22">**Milko Barev**</a> - *Back-end developer*
+* <a href="https://github.com/KDIliev22">**Kaloyan Iliev**</a> - *Back-end developer*
+* <a href="https://github.com/SNRadev22">**Stanislav Radev**</a> - *Back-end developer* 
 
 ## 🛠️ Languages and platform
 
