@@ -40,7 +40,6 @@ void Home::Update() {
 void Home::Draw() {
     ClearBackground(RAYWHITE);
 
-    // Define the sidebar color (#2F75B5)
     Color sidebarColor = ColorFromNormalized({ 0.18f, 0.46f, 0.71f, 1.0f });
 
     DrawRectangle(0, 0, 200, GetScreenHeight(), sidebarColor);
@@ -108,12 +107,12 @@ void Home::HandleInput() {
 }
 
 void Home::DrawTestMenu() {
-    DrawRectangle(300, 370, 400, 230, GRAY);
-    DrawText("Select a Subject", 350, 380, 20, BLACK);
+    DrawRectangle(365, 100, 800, 530, SKYBLUE);
+    DrawText("Select a Subject", 420, 120, 80, BLACK);
 
     vector<string> subjects = { "Biology", "Math", "Chemistry", "Geography", "History" };
 
-    Vector2 buttonPosition = { 320, 420 };
+    Vector2 buttonPosition = { 650, 220 };
     float buttonSpacing = 40.0f;
 
     for (const auto& subject : subjects) {
@@ -130,7 +129,7 @@ void Home::DrawTestMenu() {
             buttonRect.y -= (buttonRect.height - 30) / 2;
         }
 
-        DrawText(subject.c_str(), buttonRect.x + 10, buttonRect.y + 8, 20, BLACK);
+        DrawText(subject.c_str(), buttonRect.x + 50, buttonRect.y + 8, 20, BLACK);
 
         if (buttonHovered && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
             selectedSubject = subject;
