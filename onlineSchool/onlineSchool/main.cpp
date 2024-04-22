@@ -28,12 +28,13 @@ int main() {
             homeScreen.Draw();
             EndDrawing();
         }
-        if (homeScreen.isTesting == true) {
-            exam.Update();
+        if (homeScreen.isTesting) {
             BeginDrawing();
             ClearBackground(DARKBLUE);
-            exam.Draw();
+            exam.Update();
+            float score = exam.StartTest(homeScreen.selectedSubject);
             EndDrawing();
+            homeScreen.isTesting = false;
         }
     }
 

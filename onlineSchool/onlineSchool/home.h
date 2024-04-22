@@ -24,6 +24,7 @@ public:
     void StartTest(const string& subject);
     bool isTesting = false;
     static string formatFloat(float value);
+    string selectedSubject;
 
 private:
     enum class Section {
@@ -60,7 +61,6 @@ private:
     bool displayRankings;
     bool displayRemarks;
     bool displayTestMenu;
-    string selectedSubject;
     float CalculateAverageGrade(const string& username);
     string FindUserWithHighestAverage();
     string FindUserWithLowestAverage();

@@ -7,10 +7,15 @@ Exam::Exam() {
 
 void Exam::Draw() {
     DrawText("Test", 80, 45, 90, WHITE);
+    DrawText(line.c_str(), 50, 135, 40, WHITE);
+    DrawText(line2.c_str(), 50, 175, 40, WHITE);
 }
 
 void Exam::Update() {
-
+    BeginDrawing();
+    ClearBackground(DARKBLUE);
+    Draw();
+    EndDrawing();
 }
 
 void Exam::LoadTestQuestions(const string& subject) {
@@ -51,6 +56,8 @@ float Exam::StartTest(const string& subject) {
     LoadTestQuestions(subject);
     for (int i = 0; i < questionCount; i++) {
         GetTestQuestions(subject);
+        Update();
+        cin >> userAnswers[i];
         if (userAnswers[i] == correctAnswers[i]) {
             correctAnswersCount++;
         }
