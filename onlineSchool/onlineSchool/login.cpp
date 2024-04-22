@@ -102,7 +102,7 @@ void Login::Draw() {
 void Login::HandleInput() {
     int key = GetKeyPressed();
 
-    //Handle Caps Lock toggle
+    // Handle Caps Lock toggle
     static bool capsLockPrevState = false;
     bool capsLockCurrState = IsKeyPressed(KEY_CAPS_LOCK);
     if (capsLockCurrState && !capsLockPrevState) {
@@ -162,7 +162,7 @@ void Login::HandleInput() {
         passwordBoxOutlineColor = BLACK;
     }
 
-    //make it able to diselect a box by clicking outside of it
+    // Make it able to deselect a box by clicking outside of it
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         if (!emailBoxHovered && !passwordBoxHovered) {
             emailBoxClicked = false;
@@ -170,7 +170,7 @@ void Login::HandleInput() {
         }
     }
 
-    //Check if the eamil box has been clicked on
+    // Check if the email box has been clicked on
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         if (emailBoxHovered) {
             emailBoxClicked = true;
@@ -178,7 +178,7 @@ void Login::HandleInput() {
         }
     }
 
-    //Check if the password box has been clicked on
+    // Check if the password box has been clicked on
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         if (passwordBoxHovered) {
             emailBoxClicked = false;
@@ -186,10 +186,9 @@ void Login::HandleInput() {
         }
     }
 
-    //Check if the password unhide button has been clicked on
+    // Check if the password unhide button has been clicked on
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-        if (passwordButtonHovered) 
-        {
+        if (passwordButtonHovered) {
             isPasswordHidden = !isPasswordHidden;
         }
     }
@@ -197,28 +196,32 @@ void Login::HandleInput() {
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         if (loginButtonHovered) {
             loginClicked = true;
-            // Check if the email exists and if the password matches
-            if (CheckLogin(email, password)) {
-                isLoggedIn = true;
-                loggedInUserEmail = email;
+            if (email.length() >= MIN_EMAIL_LENGTH && password.length() >= MIN_PASSWORD_LENGTH) {
+                if (CheckLogin(email, password)) {
+                    isLoggedIn = true;
+                    loggedInUserEmail = email;
+                }
+                else {
+                    DrawText("Invalid Email or Password!", 400, 500, 30, RED);
+                }
             }
             else {
-                // Login failed
-                DrawText("Invalid Email or Password!", 400, 500, 30, RED);
+                DrawText("Please provide valid Email and Password!", 400, 500, 30, RED);
             }
-
-
         }
         if (registerButtonHovered) {
             registerClicked = true;
-            if (CheckExistingEmail(email)) {
-                // Email already exists
-                DrawText("Email Already Exists!", 400, 500, 30, RED);
+            if (email.length() >= MIN_EMAIL_LENGTH && password.length() >= MIN_PASSWORD_LENGTH) {
+                if (CheckExistingEmail(email)) {
+                    DrawText("Email Already Exists!", 400, 500, 30, RED);
+                }
+                else {
+                    RegisterNewAccount(email, password);
+                    DrawText("Account Registered Successfully!", 400, 500, 30, GREEN);
+                }
             }
             else {
-                // Create new account
-                RegisterNewAccount(email, password);
-                DrawText("Account Registered Successfully!", 400, 500, 30, GREEN);
+                DrawText("Please provide valid Email and Password!", 400, 500, 30, RED);
             }
         }
     }

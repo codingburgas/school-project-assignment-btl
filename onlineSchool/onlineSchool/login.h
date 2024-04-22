@@ -25,6 +25,8 @@ public:
 private:
     const int MAX_EMAIL_LENGTH = 45;
     const int MAX_PASSWORD_LENGTH = 20;
+    const int MIN_EMAIL_LENGTH = 3;
+    const int MIN_PASSWORD_LENGTH = 6;
 
     Rectangle line;
     Rectangle outerBox;
