@@ -3,6 +3,7 @@
 
 Exam::Exam() {
     examContainer = { 250, 125, 800, 400 };
+    correctAnswersCount = 0;
 }
 
 void Exam::Draw() {
@@ -51,7 +52,25 @@ void Exam::GetTestQuestions(const string& subject) {
     correctAnswers[counter] = line2[line2.length() - 1];
 }
 
-float Exam::StartTest(const string& subject) {
+int Exam::CalculateGrade(float percentage) {
+    if (percentage >= 0 && percentage <= 50) {
+        return 2;
+    }
+    else if (percentage <= 65) {
+        return 3;
+    }
+    else if (percentage <= 75) {
+        return 4;
+    }
+    else if (percentage <= 85) {
+        return 5;
+    }
+    else {
+        return 6;
+    }
+}
+
+int Exam::StartTest(const string& subject, const string& userEmail) {
     cout << "Starting test for subject: " << subject << endl;
     LoadTestQuestions(subject);
     for (int i = 0; i < questionCount; i++) {
@@ -62,37 +81,20 @@ float Exam::StartTest(const string& subject) {
             correctAnswersCount++;
         }
     }
-    float percentage = (correctAnswersCount / static_cast<float>(questionCount)) * 100;
+    float percentage = (static_cast<float>(correctAnswersCount) / questionCount) * 100;
+    int grade = CalculateGrade(percentage);
+    cout << "Grade: " << grade << endl;
+    WriteGradeToUserFile(subject, grade, userEmail);
+    return grade;
+}
 
-    char grade;
-    if (percentage <= 50) {
-        grade = '2';
+void Exam::WriteGradeToUserFile(const string& subject, int grade, const string& userEmail) {
+    string fileName = "users/" + userEmail + "/grades.txt";
+    ofstream outFile(fileName, ios::app);
+    if (!outFile.is_open()) {
+        cerr << "Error: Unable to open user grades file: " << fileName << endl;
+        return;
     }
-    else if (percentage <= 65) {
-        grade = '3';
-    }
-    else if (percentage <= 75) {
-        grade = '4';
-    }
-    else if (percentage <= 85) {
-        grade = '5';
-    }
-    else {
-        grade = '6';
-    }
-
-    // Write the grade to the grades.txt file
-    ofstream gradesFile("grades.txt", ios::app);
-    if (gradesFile.is_open()) {
-        gradesFile << "Subject: " << subject << ", Grade: " << grade << endl;
-        gradesFile.close();
-    }
-    else {
-        cerr << "Unable to open grades.txt for writing." << endl;
-    }
-
-    cout << "You answered " << correctAnswersCount << " questions correctly, which is " << percentage << "%." << endl;
-    cout << "Your grade is: " << grade << endl;
-
-    return percentage;
+    outFile << subject << ": " << grade << endl;
+    outFile.close();
 }

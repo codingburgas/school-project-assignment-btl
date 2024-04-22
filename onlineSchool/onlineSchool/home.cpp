@@ -24,8 +24,8 @@ Home::Home(Login& login) : loginRef(login) {
 
     //Text positions
     gradesTextPos = { 50, 135 };
-    rankingsTextPos = {30, 335};
-    examsTextPos = {40, 535};
+    rankingsTextPos = { 30, 335 };
+    examsTextPos = { 40, 535 };
 
     //Font Filters
     SetTextureFilter(sansSerifBold.texture, TEXTURE_FILTER_TRILINEAR);
@@ -140,10 +140,6 @@ void Home::DrawTestMenu() {
     }
 }
 
-void Home::StartTest(const string& subject) {
-    cout << "Starting test for subject: " << subject << endl;
-}
-
 float Home::CalculateAverageGrade(const string& email) {
     vector<string> gradeLines = loginRef.GetGrades(email);
     if (gradeLines.empty()) {
@@ -166,7 +162,6 @@ float Home::CalculateAverageGrade(const string& email) {
                     count++;
                 }
                 catch (...) {
-                   
                 }
             }
         }
@@ -235,7 +230,6 @@ void Home::DisplayUserGrades() {
         DrawLine(400, 180, 800, 180, BLACK);
 
         for (const auto& line : gradeLines) {
-            // Split the line into subject and grade
             size_t separatorPos = line.find(':');
             if (separatorPos != string::npos && separatorPos + 1 < line.length()) {
                 string subject = line.substr(0, separatorPos);
@@ -311,6 +305,5 @@ string Home::formatFloat(float value) {
     if (decimalPos != string::npos && result.length() > decimalPos + 3) {
         result = result.substr(0, decimalPos + 3);
     }
-
     return result;
 }

@@ -5,7 +5,7 @@
 #include "raylib.h"
 #include "login.h"
 #include <vector>
-#include <cstdlib>
+#include <sstream>
 
 class Exam {
 
@@ -15,10 +15,10 @@ public:
     void Update();
     void GetTestQuestions(const string& subject);
     void LoadTestQuestions(const string& subject);
-    float StartTest(const string& subject);
+    int StartTest(const string& subject, const string& userEmail);
     void Draw();
-
-
+    int CalculateGrade(float percentage);
+    void WriteGradeToUserFile(const string& subject, int grade, const string& userEmail);
 private:
 
     Rectangle examContainer;

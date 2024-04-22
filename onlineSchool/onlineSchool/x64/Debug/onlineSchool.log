@@ -1,17 +1,1 @@
-﻿  home.cpp
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(51,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(50,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(53,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(52,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(55,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(54,61): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(60,68): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(66,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(65,74): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(71,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(70,65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(132,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(132,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\onlineSchool\home.cpp(219,50): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
-  onlineSchool.vcxproj -> C:\Users\milko\source\repos\school-project-assignment-btl\onlineSchool\x64\Debug\onlineSchool.exe
+﻿  onlineSchool.vcxproj -> F:\New folder\school-project-assignment-btl\onlineSchool\x64\Debug\onlineSchool.exe

@@ -32,13 +32,11 @@ int main() {
             BeginDrawing();
             ClearBackground(DARKBLUE);
             exam.Update();
-            float score = exam.StartTest(homeScreen.selectedSubject);
+            float score = exam.StartTest(homeScreen.selectedSubject, loginPage.GetLoggedInUserEmail());
             EndDrawing();
             homeScreen.isTesting = false;
         }
     }
-
     CloseWindow();
-
     return 0;
 }

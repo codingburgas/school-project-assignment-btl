@@ -2,7 +2,7 @@
 
 Login::Login() {
     // Initialize UI elements
-    outerBox = {250, 125, 800, 400};
+    outerBox = { 250, 125, 800, 400 };
     emailBox = { 400, 250, 480, 50 };
     passwordBox = { 400, 320, 480, 50 };
     passwordButtonCollision = { 830, 330, 30, 30 };
@@ -28,13 +28,13 @@ Login::Login() {
     passwordHidden = LoadTexture("../textures/password/passwordHidden.png");
 
     //Texture positions
-    passwordHiddenPos = {830, 330};
+    passwordHiddenPos = { 830, 330 };
     passwordUnhiddenPos = { 830, 334 };
 
     //Fonts
     sansSerifBold = LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-Bold.ttf", 35, 0, 0);
-    sansSerif= LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-Regular.ttf", 35, 0, 0);
-    sansSerifSemiBold= LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-SemiBold.ttf", 35, 0, 0);
+    sansSerif = LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-Regular.ttf", 35, 0, 0);
+    sansSerifSemiBold = LoadFontEx("../fonts/sansSerif/OpenSans_Condensed-SemiBold.ttf", 35, 0, 0);
 
     //Text positions
     loginButtonTextPos = { 470, 405 };
@@ -62,7 +62,7 @@ void Login::Draw() {
     // Email box
     DrawRectangleLines(emailBox.x, emailBox.y, emailBox.width, emailBox.height, emailBoxOutlineColor);
     DrawTextEx(sansSerif, email.c_str(), emailBoxTextPos, 35, 0, BLACK);
-    if (!emailBoxClicked&&email.empty()) {
+    if (!emailBoxClicked && email.empty()) {
         DrawTextEx(sansSerif, "Email/username", emailBoxTextPos, 35, 0, DARKGRAY);
     }
 
@@ -76,7 +76,7 @@ void Login::Draw() {
         DrawTextureEx(passwordUnhidden, passwordUnhiddenPos, 0, 0.12, WHITE);
     }
 
-    if (!passwordBoxClicked&&password.empty()) {
+    if (!passwordBoxClicked && password.empty()) {
         DrawTextEx(sansSerif, "Password", passwordBoxTextPos, 35, 0, DARKGRAY);
     }
     if (isPasswordHidden == true) {
@@ -88,15 +88,15 @@ void Login::Draw() {
     }
 
     // Login button
-    DrawRectangle(loginButton.x, loginButton.y, loginButton.width, loginButton.height, loginButtonHovered ? BLUE:DARKBLUE);
+    DrawRectangle(loginButton.x, loginButton.y, loginButton.width, loginButton.height, loginButtonHovered ? BLUE : DARKBLUE);
     DrawTextEx(sansSerifBold, "Login", loginButtonTextPos, 35, 0, WHITE);
     if (!loginButtonHovered) {
-        
+
     }
 
     // Register button
-    DrawRectangle(registerButton.x, registerButton.y, registerButton.width, registerButton.height, registerButtonHovered ? BLUE:DARKBLUE);
-        DrawTextEx(sansSerifBold, "Register", registerButtonTextPos, 35, 0, WHITE);
+    DrawRectangle(registerButton.x, registerButton.y, registerButton.width, registerButton.height, registerButtonHovered ? BLUE : DARKBLUE);
+    DrawTextEx(sansSerifBold, "Register", registerButtonTextPos, 35, 0, WHITE);
 }
 
 void Login::HandleInput() {
@@ -286,8 +286,6 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
                 return;
             }
         }
-
-
         ofstream loginFile("users/login_info.txt", ios_base::app);
         if (loginFile.is_open()) {
             loginFile << "Email: " << email << endl;
@@ -305,25 +303,15 @@ void Login::RegisterNewAccount(const string& email, const string& password) {
             cout << "Error: Unable to create folder for account: " << email << endl;
             return;
         }
-
-        // Add default grades to grades.txt
         string gradesFileName = folderName + "/grades.txt";
         ofstream gradesFile(gradesFileName);
         if (gradesFile.is_open()) {
-            // Add default grades
-            gradesFile << "Biology: " << endl;
-            gradesFile << "Math: " << endl;
-            gradesFile << "Chemistry: " << endl;
-            gradesFile << "Geography: " << endl;
-            gradesFile << "History: " << endl;
             cout << "Grades file created successfully for account: " << email << endl;
             gradesFile.close();
         }
         else {
             cout << "Error: Unable to create grades file for account: " << email << endl;
         }
-
-        // Create remarks.txt file (if needed)
         string remarksFileName = folderName + "/remarks.txt";
         ofstream remarksFile(remarksFileName);
         if (remarksFile.is_open()) {

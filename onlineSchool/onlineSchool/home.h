@@ -5,8 +5,8 @@
 #include "login.h"
 #include "exam.h"
 #include <vector>
-#include <cstdlib>
-#include <numeric>
+
+
 
 class Home {
 public:
@@ -20,22 +20,18 @@ public:
     void DisplayUserRankings();
     void DisplayUserRemarks();
     void DrawTestMenu();
-
-    void StartTest(const string& subject);
     bool isTesting = false;
     static string formatFloat(float value);
     string selectedSubject;
-
 private:
     enum class Section {
-        Home,
         Grades,
         Rankings,
         Exams,
         TestMenu
     };
 
-    Section activeSection = Section::Home;
+    Section activeSection = Section::Grades;
     float questionCount = 20;
     int counter = 0;
     float correctAnswersCount = 0;
