@@ -5,12 +5,12 @@
 *This repository is all about our Online School Project. Our task was to create a game or a software directly related to Online Schools, using c++. To make it more interesting we have decided to use graphic libraries.* 
 
 ## 🖥 Team Members
-* <a href="https://github.com/IKKuzmova21">**Stelian Mikov**</a> - *Scrum trainer*
-* <a href="https://github.com/IKKuzmova21">**Daniel Buzin**</a> - *Front-end developer* 
-* <a href="https://github.com/IKKuzmova21">**Kevin Rusev**</a> - *Back-end developer* 
-* <a href="https://github.com/IKKuzmova21">**Milko Barev**</a> - *Back-end developer*
-* <a href="https://github.com/IKKuzmova21">**Kaloyan Iliev**</a> - *Back-end developer*
-* <a href="https://github.com/IKKuzmova21">**Stanislav Varadev**</a> - *Back-end developer* 
+* <a href="https://github.com/DRBuzin21">**Stelian Mikov**</a> - *Scrum trainer*
+* <a href="https://github.com/DRBuzin21">**Daniel Buzin**</a> - *Back-end developer* 
+* <a href="https://github.com/DRBuzin21">**Kevin Rusev**</a> - *Back-end developer* 
+* <a href="https://github.com/DRBuzin21">**Milko Barev**</a> - *Back-end developer*
+* <a href="https://github.com/DRBuzin21">**Kaloyan Iliev**</a> - *Back-end developer*
+* <a href="https://github.com/DRBuzin21">**Stanislav Radev**</a> - *Back-end developer* 
 
 ## 🛠️ Languages and platform
 
