@@ -1,50 +1,50 @@
-B) Paris
-A) Asia
-B) Amazon
-C) Japan
-B) Mount Everest
-A) Sahara
-B) Turkey
-C) Pacific Ocean
-C) Canberra
-B) Vatican City
-B) São Paulo
-B) Colorado River
-A) Sicily
-C) Ireland
-A) Madrid
-B) Uganda
-B) Vatican City
-A) Alps
-C) Ottawa
-B) Finland
-A) Angel Falls
-B) Rio Grande
-C) Mumbai
-A) Brazil
-A) Atacama Desert
-A) Volga River
-B) Lake Victoria
-D) Iraq
-A) Moscow
-D) Iceland
-A) Antarctica
-B) Mediterranean Sea
-A) Indonesia
-C) Belem
-B) Denali (Mount McKinley)
-B) Canada
-A) Buenos Aires
-B) New Zealand
-A) Bering Strait
-C) Pretoria (administrative), Bloemfontein (judicial), Cape Town (legislative)
-A) Norway
-A) Indonesia
-A) Yangtze
-A) Cairo
-B) Thailand
-A) New York City
-D) Algeria
-A) Rome
-A) Rocky Mountains
-B) Caño Cristales
+A) Paris B) London C) Berlin D) Rome #A
+A) Nile B) Amazon C) Mississippi D) Yangtze #A
+A) Mount Kilimanjaro B) K2 C) Mount Everest D) Mount Fuji #C
+A) Russia B) Canada C) China D) United States #A
+A) Sahara B) Arabian Desert C) Gobi Desert D) Kalahari Desert #A
+A) Asia B) Africa C) Europe D) Australia #C
+A) Atlantic B) Indian C) Arctic D) Pacific #D
+A) China B) India C) Russia D) Japan #D
+A) Amazon B) Mississippi C) Colorado D) Nile #C
+A) Sydney B) Melbourne C) Canberra D) Perth #C
+A) Brasília B) Rio de Janeiro C) São Paulo D) Manaus #D
+A) Kenya B) Ethiopia C) Uganda D) Tanzania #C
+A) Spanish B) Portuguese C) French D) English #B
+A) Colombia B) Ethiopia C) Brazil D) Vietnam #C
+A) Africa B) Asia C) South America D) Australia #A
+A) Panama Canal B) Suez Canal C) Kiel Canal D) Corinth Canal #B
+A) Fiji B) Samoa C) Maldives D) New Zealand #D
+A) Madrid B) Rome C) Berlin D) Paris #A
+A) Russia B) United States C) Brazil D) Turkey #D
+A) Mississippi B) Missouri C) Rio Grande D) Colorado #C
+A) Victoria Falls B) Niagara Falls C) Iguazu Falls D) Angel Falls #A
+A) Sweden B) Finland C) Norway D) Denmark #C
+A) Monaco B) Vatican City C) San Marino D) Nauru #B
+A) Cairo B) Istanbul C) Moscow D) Istanbul and Moscow #B
+A) Caribbean Sea B) Mediterranean Sea C) Red Sea D) Black Sea #B
+A) Argentina B) Brazil C) Peru D) Chile #B
+A) Norway B) Finland C) Sweden D) Denmark #B
+A) Vancouver B) Toronto C) Ottawa D) Montreal #C
+A) Rockies B) Himalayas C) Alps D) Andes #D
+A) Beijing B) Shanghai C) Tokyo D) Seoul #C
+A) Danube B) Rhine C) Volga D) Thames #C
+A) Egypt B) Greece C) Iraq D) Iran #A
+A) Jamaica B) Hispaniola C) Cuba D) Puerto Rico #C
+A) Australia B) Philippines C) Japan D) Indonesia #A
+A) Johannesburg B) Pretoria C) Cape Town D) Durban #B
+A) South Africa B) Nigeria C) Egypt D) Kenya #B
+A) Hindi B) Mandarin C) English D) Spanish #B
+A) United States B) Brazil C) Russia D) Australia #D
+A) Rome B) Madrid C) Paris D) London #A
+A) Sahara B) Kalahari C) Gobi D) Atacama #A
+A) England B) Scotland C) Wales D) Ireland #D
+A) Rio de Janeiro B) São Paulo C) Brasília D) Buenos Aires #D
+A) Yellow River B) Indus River C) Yangtze River D) Mekong River #A
+A) Rockies B) Andes C) Alps D) Himalayas #B
+A) St. Petersburg B) Moscow C) Novosibirsk D) Vladivostok #B
+A) Egypt B) Iraq C) Iran D) Turkey #A
+A) Lake Superior B) Lake Victoria C) Lake Tanganyika D) Lake Baikal #D
+A) Helsinki B) Reykjavik C) Oslo D) Stockholm #B
+A) Greenland B) Iceland C) Norway D) Sweden #B
+A) New Delhi B) Mumbai C) Kolkata D) Chennai #A

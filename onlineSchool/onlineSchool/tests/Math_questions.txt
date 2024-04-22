@@ -1,0 +1,50 @@
+What is the value of π (pi) correct to two decimal places?
+Calculate the area of a rectangle with length 8 cm and width 5 cm.
+Solve for x: 3x + 7 = 22.
+Simplify the expression: 5x - 3(x + 2) = 4.
+If a triangle has angles measuring 30°, 60°, and 90°, what is the length of the side opposite the 60° angle if the hypotenuse is 10 units long?
+What is the square root of 144?
+Solve the equation: 2(x - 4) = 10.
+If a circle has a radius of 6 cm, what is its circumference? (Use π = 3.14)
+What is the value of 5! (5 factorial)?
+Expand and simplify: (2x + 3)(x - 4).
+What is the sum of the interior angles of a pentagon?
+Solve the equation: 4x - 8 = 20.
+Find the midpoint between the points (2, 5) and (-4, 9).
+If a square has a perimeter of 20 cm, what is the length of one side?
+Calculate the area of a circle with a radius of 10 cm. (Use π = 3.14)
+If a number is increased by 20% and then decreased by 20%, what is the net change in percentage?
+Solve for x: 2x^2 - 5x - 12 = 0.
+If a cube has a volume of 125 cubic units, what is the length of one side?
+What is the value of log10(100)?
+If a car travels at a constant speed of 60 km/h, how far will it travel in 3 hours?
+Solve the inequality: 3x + 2 < 11.
+Calculate the slope of the line passing through the points (4, 7) and (-2, 3).
+If a cone has a radius of 5 cm and a height of 12 cm, what is its volume? (Use π = 3.14)
+Factorize: x^2 + 5x + 6.
+What is the sum of the first 10 positive integers?
+Solve for x: log2(x) = 4.
+If a triangle has side lengths of 5 cm, 12 cm, and 13 cm, is it a right triangle?
+Determine the discriminant of the quadratic equation 2x^2 - 5x + 3 = 0.
+Calculate the surface area of a cylinder with a radius of 4 cm and height of 10 cm. (Use π = 3.14)
+What is the value of 2^6 × 2^3?
+Find the equation of the line passing through the points (3, 5) and (6, 11) in slope-intercept form.
+Solve for x: 2cos(x) = √3.
+If a bag contains 12 red marbles, 8 blue marbles, and 5 green marbles, what is the probability of randomly selecting a red marble?
+Calculate the perimeter of a regular hexagon with each side measuring 8 cm.
+Evaluate the expression: sin(π/6).
+If f(x) = 3x^2 + 2x - 1, what is f'(x) (the derivative of f(x))?
+Solve the system of equations: {2x + 3y = 12, x - y = 5}.
+If a square pyramid has a base edge length of 6 cm and a height of 8 cm, what is its volume?
+Determine the domain of the function f(x) = √(4x - 3).
+What is the value of tan(45°)?
+Simplify the expression: log(a^2 b^3) - log(a^4 b).
+If a dice is rolled once, what is the probability of rolling an even number?
+Calculate the surface area of a sphere with a radius of 7 cm. (Use π = 3.14)
+Solve for x: 4^(x + 1) = 64.
+If a box contains 24 chocolates and 8 of them are dark chocolates, what percentage of the chocolates are dark?
+Find the x-intercept of the graph of the equation y = 2x - 6.
+Simplify: √(27/75).
+Determine the value of cos(π/3).
+If a function is defined as f(x) = x^3 - 2x^2 + x + 6, what is f(-2)?
+Solve the inequality: 3x^2 + 7x - 10 ≥ 0.
