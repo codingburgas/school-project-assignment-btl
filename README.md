@@ -9,8 +9,8 @@
 * <a href="https://github.com/IKKuzmova21">**Daniel Buzin**</a> - *Front-end developer* 
 * <a href="https://github.com/IKKuzmova21">**Kevin Rusev**</a> - *Back-end developer* 
 * <a href="https://github.com/IKKuzmova21">**Milko Barev**</a> - *Back-end developer*
-* * <a href="https://github.com/IKKuzmova21">**Kaloyan Iliev**</a> - *Back-end developer*
-  * * <a href="https://github.com/IKKuzmova21">**Stanislav Varadev**</a> - *Back-end developer* 
+* <a href="https://github.com/IKKuzmova21">**Kaloyan Iliev**</a> - *Back-end developer*
+* <a href="https://github.com/IKKuzmova21">**Stanislav Varadev**</a> - *Back-end developer* 
 
 ## 🛠️ Languages and platform
 
